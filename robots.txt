@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pt/blogue/_modelo-artigo.html
+
+Sitemap: https://www.clavedenumeros.pt/sitemap.xml

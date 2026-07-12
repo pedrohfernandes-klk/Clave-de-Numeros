@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 440" role="img" aria-labelledby="t d">
+<title id="t">Contacto e resposta rápida</title>
+<desc id="d">Formulário de contacto ao centro, cartão de localização no Montijo e confirmação de resposta, ligados por linhas tracejadas.</desc>
+<path d="M62 98 Q26 212 96 316 Q168 416 322 402 Q470 388 506 276 Q538 168 460 90 Q380 18 238 36 Q126 52 62 98Z" fill="#eef3fb"/>
+<g stroke-width="1.4" stroke-dasharray="4 6" fill="none" opacity=".55">
+  <path d="M330 140 C380 120 400 110 420 105" stroke="#2fb5c4"/>
+  <path d="M336 300 C390 315 405 320 428 328" stroke="#e0508f"/>
+  <path d="M172 320 C130 340 120 350 105 362" stroke="#3569b8"/>
+</g>
+<g>
+  <rect x="150" y="86" width="200" height="268" rx="18" fill="#fff" stroke="#e4eaf2"/>
+  <circle cx="184" cy="122" r="16" fill="#3569b8"/>
+  <circle cx="184" cy="117" r="5" fill="#fff"/>
+  <path d="M175 130c1.4-6 16.6-6 18 0z" fill="#fff"/>
+  <rect x="210" y="112" width="112" height="9" rx="4.5" fill="#c9d4e4"/>
+  <rect x="210" y="128" width="80" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="172" y="158" width="156" height="30" rx="9" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="184" y="169" width="60" height="8" rx="4" fill="#e4eaf2"/>
+  <rect x="172" y="198" width="156" height="30" rx="9" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="184" y="209" width="70" height="8" rx="4" fill="#e4eaf2"/>
+  <rect x="172" y="238" width="156" height="52" rx="9" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="184" y="250" width="96" height="8" rx="4" fill="#e4eaf2"/>
+  <rect x="184" y="266" width="72" height="8" rx="4" fill="#e4eaf2"/>
+  <rect x="172" y="302" width="156" height="34" rx="17" fill="#3569b8"/>
+  <rect x="206" y="315" width="88" height="8" rx="4" fill="#fff" opacity=".9"/>
+</g>
+<g>
+  <rect x="372" y="96" width="150" height="132" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <g stroke="#dbe4f0" stroke-width="6" opacity=".8">
+    <path d="M384 140h126M384 170h126M410 108v108M452 108v108M492 108v108"/>
+  </g>
+  <path d="M447 132a15 15 0 0 1 15 15c0 11-15 24-15 24s-15-13-15-24a15 15 0 0 1 15-15z" fill="#e0508f"/>
+  <circle cx="447" cy="147" r="5.4" fill="#fff"/>
+  <rect x="386" y="196" width="76" height="9" rx="4.5" fill="#c9d4e4"/>
+  <rect x="386" y="211" width="52" height="7" rx="3.5" fill="#e4eaf2"/>
+</g>
+<g>
+  <rect x="368" y="266" width="156" height="96" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <circle cx="398" cy="296" r="15" fill="#2fb5c4"/>
+  <path d="M391.5 296l4.4 4.4 8-9.4" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="422" y="288" width="88" height="9" rx="4.5" fill="#c9d4e4"/>
+  <rect x="386" y="322" width="120" height="8" rx="4" fill="#e4eaf2"/>
+  <rect x="386" y="338" width="92" height="8" rx="4" fill="#e4eaf2"/>
+</g>
+<g>
+  <rect x="52" y="330" width="128" height="66" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="70" y="348" width="34" height="26" rx="6" fill="#2fb5c4"/>
+  <path d="M70 352l17 11 17-11" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="104" cy="348" r="8" fill="#e0508f"/>
+  <rect x="114" y="352" width="52" height="8" rx="4" fill="#e4eaf2"/>
+  <rect x="114" y="366" width="38" height="8" rx="4" fill="#e4eaf2"/>
+</g>
+<g>
+  <circle cx="96" cy="160" r="26" fill="#fff" stroke="#e4eaf2"/>
+  <path d="M86 152c0-2 2-4 4-4h3l3 7-4 3c1.6 3.6 4 6 7.4 7.6l3-4 7 3v3c0 2-2 4-4 4-11 0-19.4-8.4-19.4-19.6z" fill="#3569b8"/>
+</g>
+<circle cx="86" cy="86" r="5" fill="#e0508f" opacity=".7"/>
+<circle cx="510" cy="60" r="9" fill="none" stroke="#2fb5c4" stroke-width="1.4" opacity=".6"/>
+<g fill="#3569b8" opacity=".3"><circle cx="252" cy="42" r="2"/><circle cx="266" cy="42" r="2"/><circle cx="280" cy="42" r="2"/><circle cx="252" cy="56" r="2"/><circle cx="266" cy="56" r="2"/><circle cx="280" cy="56" r="2"/></g>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 440" role="img" aria-labelledby="t d">
+<title id="t">Mapa de serviços</title>
+<desc id="d">Três cartões de serviço com ícones em medalhão, ligados por linhas tracejadas, sobre fundo claro.</desc>
+<path d="M60 90 Q40 200 90 300 Q140 400 300 400 Q480 400 510 290 Q540 180 470 100 Q400 30 250 40 Q120 48 60 90Z" fill="#eef3fb"/>
+<g stroke="#3569b8" stroke-width="1.4" stroke-dasharray="4 6" fill="none" opacity=".55">
+  <path d="M180 160 C230 160 240 120 285 120"/>
+  <path d="M330 200 C360 240 380 250 410 250"/>
+  <path d="M150 300 C220 330 300 330 360 300"/>
+</g>
+<circle cx="180" cy="160" r="4" fill="#e0508f"/><circle cx="410" cy="250" r="4" fill="#2fb5c4"/><circle cx="360" cy="300" r="4" fill="#3569b8"/>
+<g>
+  <rect x="60" y="120" width="150" height="150" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <circle cx="135" cy="172" r="30" fill="#eaf1fc"/>
+  <g stroke="#3569b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(123,158)">
+    <path d="M2 0h12l8 8v20H2z M14 0v8h8 M6 16h12 M6 22h12"/>
+  </g>
+  <rect x="88" y="218" width="94" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="102" y="236" width="66" height="7" rx="3.5" fill="#3569b8" opacity=".55"/>
+</g>
+<g>
+  <rect x="240" y="70" width="150" height="150" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <circle cx="315" cy="122" r="30" fill="#fdeaf3"/>
+  <g stroke="#e0508f" stroke-width="2" fill="none" stroke-linecap="round" transform="translate(300,107)">
+    <path d="M2 28 30 0"/><circle cx="7" cy="7" r="5"/><circle cx="25" cy="23" r="5"/>
+  </g>
+  <rect x="268" y="168" width="94" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="282" y="186" width="66" height="7" rx="3.5" fill="#e0508f" opacity=".5"/>
+</g>
+<g>
+  <rect x="350" y="270" width="150" height="150" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <circle cx="425" cy="322" r="30" fill="#e2f6f9"/>
+  <g stroke="#2fb5c4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(409,308)">
+    <path d="M0 28h32 M2 22l8-10 6 6 12-14"/>
+  </g>
+  <rect x="378" y="368" width="94" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="392" y="386" width="66" height="7" rx="3.5" fill="#2fb5c4" opacity=".55"/>
+</g>
+<g>
+  <rect x="96" y="330" width="120" height="34" rx="17" fill="#fff" stroke="#e4eaf2"/>
+  <circle cx="118" cy="347" r="9" fill="#3569b8"/>
+  <path d="M114.5 347l2.6 2.6 4.6-5.4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="136" y="343" width="64" height="8" rx="4" fill="#e4eaf2"/>
+</g>
+<circle cx="80" cy="70" r="6" fill="#2fb5c4" opacity=".8"/>
+<circle cx="500" cy="60" r="10" fill="none" stroke="#e0508f" stroke-width="1.4" opacity=".6"/>
+<circle cx="520" cy="380" r="5" fill="#3569b8" opacity=".6"/>
+<g fill="#3569b8" opacity=".35"><circle cx="250" cy="30" r="2"/><circle cx="264" cy="30" r="2"/><circle cx="278" cy="30" r="2"/><circle cx="250" cy="44" r="2"/><circle cx="264" cy="44" r="2"/><circle cx="278" cy="44" r="2"/></g>
+</svg>
