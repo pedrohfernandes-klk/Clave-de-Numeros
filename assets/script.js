@@ -58,6 +58,10 @@ if (faqInput) {
   const empty = scope.querySelector('[data-faq-empty]');
   const buttons = [...scope.querySelectorAll('[data-faq-category]')];
   const norm = (text) => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  buttons.forEach((button) => {
+    const key = button.dataset.faqCategory || 'todos';
+    if (key !== 'todos' && !items.some((item) => (item.dataset.category || '').split(' ').includes(key))) button.hidden = true;
+  });
   let category = 'todos';
   const filter = () => {
     const q = norm(faqInput.value.trim()); let visible = 0;
