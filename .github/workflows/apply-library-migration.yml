@@ -3,7 +3,7 @@ name: Apply library migration
 on:
   push:
     paths:
-      - library_payload.part07r
+      - library_payload.part07h05
 
 permissions:
   contents: write
@@ -22,9 +22,15 @@ jobs:
         run: |
           cat library_payload.part00 library_payload.part01 library_payload.part02 library_payload.part03 library_payload.part04 library_payload.part05 > library_payload.b64
           rev library_payload.part06r >> library_payload.b64
-          rev library_payload.part07r >> library_payload.b64
+          python - <<'PY'
+          from pathlib import Path
+          names = [f'library_payload.part07h{i:02d}' for i in range(6)]
+          encoded = ''.join(Path(name).read_text() for name in names)
+          with open('library_payload.b64', 'ab') as target:
+              target.write(bytes.fromhex(encoded))
+          PY
           base64 --decode library_payload.b64 | tar -xz
-          rm -f library_payload.b64 library_payload.part00 library_payload.part01 library_payload.part02 library_payload.part03 library_payload.part04 library_payload.part05 library_payload.part06r library_payload.part07r
+          rm -f library_payload.b64 library_payload.part00 library_payload.part01 library_payload.part02 library_payload.part03 library_payload.part04 library_payload.part05 library_payload.part06r library_payload.part07h00 library_payload.part07h01 library_payload.part07h02 library_payload.part07h03 library_payload.part07h04 library_payload.part07h05
           rm -f .github/workflows/apply-library-migration.yml
 
       - name: Commit completed migration
