@@ -44,21 +44,40 @@ if (method) {
   }
 }
 
-/* Pesquisa nas perguntas frequentes (página Guias) */
+/* Pesquisa e categorias nas perguntas frequentes (página Guias) */
 const faqInput = document.querySelector('[data-faq-filter]');
 if (faqInput) {
   const items = [...document.querySelectorAll('.faq details')];
   const empty = document.querySelector('[data-faq-empty]');
+  const categoryButtons = [...document.querySelectorAll('[data-faq-category]')];
   const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  faqInput.addEventListener('input', () => {
+  let activeCategory = 'todos';
+
+  const filterFaq = () => {
     const q = norm(faqInput.value.trim());
     let visible = 0;
     items.forEach(d => {
-      const hit = !q || norm(d.textContent).includes(q);
+      const category = d.dataset.category || '';
+      const categoryHit = activeCategory === 'todos' || category.split(' ').includes(activeCategory);
+      const textHit = !q || norm(d.textContent).includes(q);
+      const hit = categoryHit && textHit;
       d.style.display = hit ? '' : 'none';
       if (hit) visible++;
     });
     if (empty) empty.style.display = visible ? 'none' : 'block';
+  };
+
+  faqInput.addEventListener('input', filterFaq);
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      activeCategory = button.dataset.faqCategory || 'todos';
+      categoryButtons.forEach(item => {
+        const active = item === button;
+        item.setAttribute('aria-pressed', active ? 'true' : 'false');
+        item.classList.toggle('active', active);
+      });
+      filterFaq();
+    });
   });
 }
 
