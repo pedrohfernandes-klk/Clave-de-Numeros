@@ -72,3 +72,31 @@
 @media(min-width:900px){.contact-layout{grid-template-columns:1.15fr .85fr;align-items:start}}
 .push-top{margin-top:18px}
 p.section-head{color:var(--ink-2);margin-bottom:36px}
+
+/* ==========================================================================
+   v22 · Refinamento: navegação mais clara, ritmo e detalhe
+   ========================================================================== */
+::selection{background:var(--blue-soft);color:var(--ink)}
+.section{padding:clamp(72px,9vw,104px) 0}
+.hero{padding:clamp(56px,7vw,88px) 0 clamp(48px,6vw,72px)}
+.hero::before{content:"";position:absolute;right:-12%;top:-30%;width:56%;height:120%;background:radial-gradient(closest-side,var(--blue-soft),transparent 72%);opacity:.55;pointer-events:none}
+.hero .container{position:relative}
+.hero-media img{filter:drop-shadow(0 26px 44px rgba(20,33,61,.10))}
+.page-hero .hero-media img{filter:drop-shadow(0 26px 44px rgba(20,33,61,.10))}
+.nav-links a{transition:background .18s,color .18s}
+.nav-links a span{opacity:.75}
+.nav-links a[aria-current=page]{color:var(--blue);background:var(--blue-soft)}
+.nav-links a[aria-current=page] span{color:var(--blue);opacity:1}
+.cta:not(.ghost)::after{content:"→";font-family:var(--font-body);font-size:.9rem;transition:transform .18s}
+.cta:not(.ghost):hover::after{transform:translateX(3px)}
+.lede{font-size:1.13rem}
+.section-head{margin-bottom:48px}
+.stat-strip .stat b{font-size:1.9rem;letter-spacing:-.02em}
+.stat-strip .stat{padding:26px 14px}
+.footer-grid{padding:56px 0}
+.footer h4{letter-spacing:.1em}
+.legal{padding:20px 0 30px}
+.legal a:hover{color:var(--blue)}
+.footer p a:hover{color:var(--blue)}
+.quote{box-shadow:0 1px 0 rgba(20,33,61,.02)}
+.tab-index .tab{box-shadow:0 -6px 18px rgba(20,33,61,.04)}
