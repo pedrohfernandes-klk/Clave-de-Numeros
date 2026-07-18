@@ -3,7 +3,7 @@ name: Apply library migration
 on:
   push:
     paths:
-      - library_payload.b64
+      - library_payload.part07
 
 permissions:
   contents: write
@@ -20,8 +20,9 @@ jobs:
       - name: Expand library files
         shell: bash
         run: |
+          cat library_payload.part00 library_payload.part01 library_payload.part02 library_payload.part03 library_payload.part04 library_payload.part05 library_payload.part06 library_payload.part07 > library_payload.b64
           base64 --decode library_payload.b64 | tar -xz
-          rm -f library_payload.b64
+          rm -f library_payload.b64 library_payload.part00 library_payload.part01 library_payload.part02 library_payload.part03 library_payload.part04 library_payload.part05 library_payload.part06 library_payload.part07
           rm -f .github/workflows/apply-library-migration.yml
 
       - name: Commit completed migration
