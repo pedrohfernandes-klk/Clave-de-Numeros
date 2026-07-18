@@ -7,4 +7,21 @@
 #equipa .member-founder{border-color:rgba(53,105,184,.28)}
 #equipa .member-founder b{font-size:1.04rem}
 #equipa .member-operations{border-color:rgba(47,181,196,.24)}
-@media(max-width:760px){#equipa .team-grid-hierarchy{grid-template-columns:1fr}#equipa .member{grid-template-columns:82px minmax(0,1fr)}#equipa .member>[class^="team-photo-"]{width:62px;height:78px;margin:14px 0 14px 14px}#equipa .member figcaption{padding:14px 14px 14px 10px}}
+
+/* Testemunhos — seis depoimentos completos, todos com a mesma hierarquia. */
+.testimonial-carousel{position:relative}
+.testimonial-viewport{overflow:hidden}
+.testimonial-track{display:flex;gap:18px;will-change:transform;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+.testimonial-slide{flex:0 0 calc((100% - 36px)/3);display:flex;flex-direction:column;justify-content:space-between;min-width:0;height:auto;margin:0}
+.testimonial-slide blockquote{flex:1;margin:0}
+.testimonial-slide figcaption{margin-top:24px}
+.testimonial-controls{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:18px}
+.carousel-button{display:inline-grid;place-items:center;width:42px;height:42px;border:1px solid rgba(20,34,52,.18);border-radius:999px;background:transparent;color:inherit;font:600 1rem/1 inherit;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease}
+.carousel-button:hover,.carousel-button:focus-visible{background:rgba(53,105,184,.08);border-color:rgba(53,105,184,.36);transform:translateY(-1px)}
+.carousel-button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.carousel-status{margin:0;min-width:70px;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.04em}
+.testimonial-carousel.is-static .testimonial-controls{display:none}
+
+@media(max-width:980px){.testimonial-slide{flex-basis:calc((100% - 18px)/2)}}
+@media(max-width:760px){#equipa .team-grid-hierarchy{grid-template-columns:1fr}#equipa .member{grid-template-columns:82px minmax(0,1fr)}#equipa .member>[class^="team-photo-"]{width:62px;height:78px;margin:14px 0 14px 14px}#equipa .member figcaption{padding:14px 14px 14px 10px}.testimonial-slide{flex-basis:100%}.testimonial-controls{justify-content:center}}
+@media(prefers-reduced-motion:reduce){.testimonial-track{transition:none}}
