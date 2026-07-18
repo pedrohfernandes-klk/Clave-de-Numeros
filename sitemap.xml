@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Ao publicar um artigo novo do blogue, acrescentar um bloco <url> aqui. -->
+<!-- Biblioteca de guias: atualizar lastmod quando um conteúdo for revisto. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.clavedenumeros.pt/pt/</loc><priority>1.0</priority></url>
   <url><loc>https://www.clavedenumeros.pt/pt/servicos.html</loc><priority>0.9</priority></url>
   <url><loc>https://www.clavedenumeros.pt/pt/para-empresas.html</loc><priority>0.9</priority></url>
   <url><loc>https://www.clavedenumeros.pt/pt/para-particulares.html</loc><priority>0.9</priority></url>
   <url><loc>https://www.clavedenumeros.pt/pt/sobre.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/guias.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/guias.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/glossario.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
   <url><loc>https://www.clavedenumeros.pt/pt/contactos.html</loc><priority>0.9</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/blogue/</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/blogue/documentos-contabilidade-mensal.html</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/blogue/sistema-contabilistico-portugues.html</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/blogue/abrir-empresa-contabilidade-primeiros-passos.html</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/blogue/lucro-nao-e-tesouraria.html</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/blogue/contratar-primeiro-trabalhador.html</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/blogue/fecho-ano-inventarios.html</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/pt/blogue/regime-simplificado-contabilidade-organizada.html</loc><lastmod>2026-07-18</lastmod><priority>0.7</priority></url>
   <url><loc>https://www.clavedenumeros.pt/pt/privacidade.html</loc><priority>0.3</priority></url>
   <url><loc>https://www.clavedenumeros.pt/pt/aviso-legal.html</loc><priority>0.3</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/guias/documentacao-mensal.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/guias/sistema-contabilistico-portugues.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/guias/abrir-empresa-portugal.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/guias/lucro-caixa-tesouraria.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/guias/contratar-primeiro-trabalhador.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/guias/fecho-anual-inventarios.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.clavedenumeros.pt/pt/guias/regime-simplificado-contabilidade-organizada.html</loc><lastmod>2026-07-18</lastmod><priority>0.8</priority></url>
   <url><loc>https://www.clavedenumeros.pt/en/</loc><priority>0.8</priority></url>
   <url><loc>https://www.clavedenumeros.pt/en/services.html</loc><priority>0.7</priority></url>
   <url><loc>https://www.clavedenumeros.pt/en/for-businesses.html</loc><priority>0.7</priority></url>
@@ -25,8 +25,6 @@
   <url><loc>https://www.clavedenumeros.pt/en/about.html</loc><priority>0.6</priority></url>
   <url><loc>https://www.clavedenumeros.pt/en/guides.html</loc><priority>0.6</priority></url>
   <url><loc>https://www.clavedenumeros.pt/en/contact.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/en/blog/</loc><priority>0.5</priority></url>
-  <url><loc>https://www.clavedenumeros.pt/en/blog/monthly-accounting-documents.html</loc><priority>0.4</priority></url>
   <url><loc>https://www.clavedenumeros.pt/en/privacy.html</loc><priority>0.2</priority></url>
   <url><loc>https://www.clavedenumeros.pt/en/legal-notice.html</loc><priority>0.2</priority></url>
 </urlset>
