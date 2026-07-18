@@ -81,6 +81,99 @@ if (faqInput) {
   });
 }
 
+/* Carrossel infinito de testemunhos (3 desktop, 2 tablet, 1 mobile) */
+const testimonialCarousel = document.querySelector('[data-testimonial-carousel]');
+if (testimonialCarousel) {
+  const track = testimonialCarousel.querySelector('.testimonial-track');
+  const prev = testimonialCarousel.querySelector('[data-carousel-prev]');
+  const next = testimonialCarousel.querySelector('[data-carousel-next]');
+  const status = testimonialCarousel.querySelector('[data-carousel-current]');
+  const originals = [...track.children].map(item => item.cloneNode(true));
+  const total = originals.length;
+  let visible = 3;
+  let index = 0;
+  let moving = false;
+  let timer = null;
+  let resizeTimer = null;
+
+  const visibleCount = () => window.innerWidth <= 760 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
+  const gap = () => parseFloat(getComputedStyle(track).gap) || 0;
+  const stepWidth = () => {
+    const slide = track.querySelector('.testimonial-slide');
+    return slide ? slide.getBoundingClientRect().width + gap() : 0;
+  };
+
+  const updateStatus = () => {
+    const first = ((index - visible) % total + total) % total;
+    const labels = [];
+    for (let i = 0; i < visible; i++) labels.push(((first + i) % total) + 1);
+    if (status) status.textContent = labels.length === 1 ? String(labels[0]) : `${labels[0]}–${labels[labels.length - 1]}`;
+  };
+
+  const setPosition = (animate = true) => {
+    track.style.transition = animate && !reduced ? '' : 'none';
+    track.style.transform = `translate3d(${-index * stepWidth()}px,0,0)`;
+    updateStatus();
+  };
+
+  const build = () => {
+    visible = Math.min(visibleCount(), total);
+    track.innerHTML = '';
+    const before = originals.slice(-visible).map(item => item.cloneNode(true));
+    const after = originals.slice(0, visible).map(item => item.cloneNode(true));
+    [...before, ...originals.map(item => item.cloneNode(true)), ...after].forEach(item => track.appendChild(item));
+    index = visible;
+    testimonialCarousel.classList.toggle('is-static', total <= visible);
+    requestAnimationFrame(() => setPosition(false));
+  };
+
+  const move = (direction) => {
+    if (moving || total <= visible) return;
+    moving = true;
+    index += direction;
+    setPosition(true);
+    if (reduced) {
+      moving = false;
+      if (index >= total + visible) { index = visible; setPosition(false); }
+      if (index < visible) { index = total + visible - 1; setPosition(false); }
+    }
+  };
+
+  const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+  const start = () => {
+    stop();
+    if (!reduced && total > visible) timer = setInterval(() => move(1), 6500);
+  };
+
+  track.addEventListener('transitionend', () => {
+    if (index >= total + visible) {
+      index = visible;
+      setPosition(false);
+    } else if (index < visible) {
+      index = total + visible - 1;
+      setPosition(false);
+    }
+    moving = false;
+  });
+
+  prev?.addEventListener('click', () => { move(-1); start(); });
+  next?.addEventListener('click', () => { move(1); start(); });
+  testimonialCarousel.addEventListener('mouseenter', stop);
+  testimonialCarousel.addEventListener('mouseleave', start);
+  testimonialCarousel.addEventListener('focusin', stop);
+  testimonialCarousel.addEventListener('focusout', (event) => {
+    if (!testimonialCarousel.contains(event.relatedTarget)) start();
+  });
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { build(); start(); }, 180);
+  });
+
+  build();
+  start();
+}
+
 /* Formulário de contacto
    ⚠️ CONFIGURAR: substituir o endpoint no atributo action do <form>
    (ver GUIA-DE-EDICAO.md, secção "Formulário"). */
