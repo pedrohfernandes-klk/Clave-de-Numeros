@@ -1,1 +1,10 @@
-.team-grid-hierarchy{align-items:start}.member img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--blue-soft)}.member-founder{border-top:4px solid var(--blue)}.member-operations{border-top:3px solid var(--teal)}.member-founder b{font-size:1.12rem}.member-operations b{font-size:1.06rem}.quote-grid{align-items:start}.quote blockquote{line-height:1.62}@media(min-width:900px){.team-grid-hierarchy{grid-template-columns:1.25fr 1.08fr 1fr 1fr}.member-founder{transform:translateY(-8px)}.member-operations{transform:translateY(-3px)}}
+/* Equipa (sobre.html) — ajuste estritamente local: preserva o sistema visual e mantém as fotografias discretas. */
+#equipa .team-grid-hierarchy{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#equipa .member{display:grid;grid-template-columns:92px minmax(0,1fr);align-items:start;min-height:0;overflow:hidden}
+#equipa .member>[class^="team-photo-"]{width:72px;height:90px;min-height:0!important;aspect-ratio:auto!important;margin:16px 0 16px 16px;border-radius:10px;background-size:cover;background-position:center;background-repeat:no-repeat}
+#equipa .member figcaption{padding:16px 18px}
+#equipa .member-founder,#equipa .member-operations{grid-column:auto;box-shadow:none}
+#equipa .member-founder{border-color:rgba(53,105,184,.28)}
+#equipa .member-founder b{font-size:1.04rem}
+#equipa .member-operations{border-color:rgba(47,181,196,.24)}
+@media(max-width:760px){#equipa .team-grid-hierarchy{grid-template-columns:1fr}#equipa .member{grid-template-columns:82px minmax(0,1fr)}#equipa .member>[class^="team-photo-"]{width:62px;height:78px;margin:14px 0 14px 14px}#equipa .member figcaption{padding:14px 14px 14px 10px}}
