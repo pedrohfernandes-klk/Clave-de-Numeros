@@ -100,3 +100,34 @@ p.section-head{color:var(--ink-2);margin-bottom:36px}
 .footer p a:hover{color:var(--blue)}
 .quote{box-shadow:0 1px 0 rgba(20,33,61,.02)}
 .tab-index .tab{box-shadow:0 -6px 18px rgba(20,33,61,.04)}
+
+/* ==========================================================================
+   v23 · Dinâmica: micro-animações e detalhe (anuladas com reduced-motion)
+   ========================================================================== */
+@keyframes cn-pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,181,196,.4)}55%{box-shadow:0 0 0 7px rgba(47,181,196,0)}}
+@keyframes cn-float{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+@keyframes cn-fade-slide{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.kicker::before{animation:cn-pulse 2.6s ease-in-out infinite}
+.hero-media img{animation:cn-float 5.5s ease-in-out infinite alternate}
+.hero h1 .accent{background:linear-gradient(92deg,var(--blue),var(--teal) 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta:not(.ghost){position:relative;overflow:hidden}
+.cta:not(.ghost)::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-130%);transition:transform .55s ease}
+.cta:not(.ghost):hover::before{transform:translateX(130%)}
+.ib{transition:transform .18s}
+.service-card:hover .ib{transform:scale(1.1) rotate(-4deg)}
+.service-card i{transition:transform .18s}
+.service-card:hover i{transform:translateX(3px)}
+.text-link{text-decoration:none;background-image:linear-gradient(currentColor,currentColor);background-size:0% 1px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .25s}
+.text-link:hover{background-size:100% 1px}
+.faq details[open] .answer{animation:cn-fade-slide .28s ease}
+:is(.service-grid,.reason-grid,.post-grid,.quote-grid,.team-grid)>.reveal:nth-child(2){transition-delay:.07s}
+:is(.service-grid,.reason-grid,.post-grid,.quote-grid,.team-grid)>.reveal:nth-child(3){transition-delay:.14s}
+:is(.service-grid,.reason-grid,.post-grid,.quote-grid,.team-grid)>.reveal:nth-child(4){transition-delay:.21s}
+:is(.service-grid,.reason-grid,.post-grid,.quote-grid,.team-grid)>.reveal:nth-child(5){transition-delay:.28s}
+:is(.service-grid,.reason-grid,.post-grid,.quote-grid,.team-grid)>.reveal:nth-child(6){transition-delay:.35s}
+:is(.service-grid,.reason-grid,.post-grid,.quote-grid,.team-grid)>.reveal:nth-child(7){transition-delay:.42s}
+:is(.service-grid,.reason-grid,.post-grid,.quote-grid,.team-grid)>.reveal:nth-child(8){transition-delay:.49s}
+:is(.service-grid,.reason-grid,.post-grid,.quote-grid,.team-grid)>.reveal:nth-child(9){transition-delay:.56s}
+.stat-strip .stat{transition:background .18s}
+.stat-strip .stat:hover{background:#fff}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--blue),var(--teal),var(--pink));z-index:120;pointer-events:none}

@@ -83,3 +83,19 @@ if (form) {
     } catch { err.classList.add('err'); err.focus(); }
   });
 }
+
+/* Barra de progresso de leitura (desligada com prefers-reduced-motion) */
+if (!reduced) {
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  const updateBar = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+  };
+  document.addEventListener('scroll', updateBar, { passive: true });
+  window.addEventListener('resize', updateBar);
+  updateBar();
+}
