@@ -43,6 +43,17 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
     setText('#razoes .section-head h2.display, #reasons .section-head h2.display', isEnglish
       ? 'A collaboration built on trust.'
       : 'Uma colaboração baseada na confiança.');
+    setText('#guias .section-head h2.display, #guides .section-head h2.display', isEnglish
+      ? 'Obligations and decisions, clearly explained.'
+      : 'Obrigações e decisões, com clareza.');
+    setText('#guias .section-head p, #guides .section-head p', isEnglish
+      ? 'Answers and articles on accounting, taxation, sole traders, personal income tax and online businesses.'
+      : 'Respostas e artigos sobre contabilidade, fiscalidade, ENI, IRS e negócios online.');
+
+    const reasonsTab = document.querySelector('#razoes .tab-index .tab, #reasons .tab-index .tab');
+    if (reasonsTab) reasonsTab.innerHTML = isEnglish
+      ? '<i>05</i> Why choose Clave <em>of 06</em>'
+      : '<i>05</i> Porquê escolher a Clave <em>de 06</em>';
 
     const origin = document.querySelector('#origem .split > div, #origins .split > div');
     if (origin) {
@@ -55,6 +66,14 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
         ? 'Responsiveness, availability and rigour continue to distinguish Clave de Números.'
         : 'Rapidez de resposta, disponibilidade e rigor continuam a distinguir a Clave de Números.';
     }
+  }
+
+  const methodPhases = document.querySelectorAll('.method .phase');
+  if (methodPhases.length >= 3) {
+    const paragraph = methodPhases[2].querySelector('p');
+    if (paragraph) paragraph.textContent = isEnglish
+      ? 'We process the agreed accounting, tax, payroll or administrative work regularly and communicate what is needed in good time.'
+      : 'Processamos o trabalho contabilístico, fiscal, salarial ou administrativo contratado com regularidade e comunicamos o que é necessário em tempo útil.';
   }
 
   if (/\/(servicos|services)\.html$/.test(path)) setText('.page-hero h1.display', isEnglish ? 'Organise. Support. Decide.' : 'Organizar. Acompanhar. Decidir.');
