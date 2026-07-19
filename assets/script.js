@@ -16,71 +16,29 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   }
 });
 
-/* Fotografias editoriais do Montijo e mapa da morada. */
+/* Mapa da morada nas páginas de contacto. */
 (() => {
   const path = window.location.pathname;
   const isEnglish = /\/en\//.test(path);
-  const assetRoot = '../assets/';
+  const isContact = /\/(contactos|contact)\.html$/.test(path);
+  if (!isContact || document.querySelector('[data-office-map]')) return;
 
   if (!document.querySelector('link[href$="local-photos.css"]')) {
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = `${assetRoot}local-photos.css`;
+    stylesheet.href = '../assets/local-photos.css';
     document.head.appendChild(stylesheet);
   }
 
-  const makePhotoSection = ({ image, alt, caption, frameClass = '', creditHtml = '' }) => {
-    const section = document.createElement('section');
-    section.className = 'section local-photo-section';
-    section.innerHTML = `<div class="container"><figure class="local-photo-figure"><div class="local-photo-frame wide ${frameClass}"><img src="${assetRoot}montijo/${image}" alt="${alt}" width="1280" height="720" loading="lazy" decoding="async"></div><figcaption class="local-photo-caption">${caption}${creditHtml}</figcaption></figure></div>`;
-    return section;
-  };
+  const main = document.querySelector('main');
+  if (!main) return;
 
-  const isHome = /\/(pt|en)\/?(?:index\.html)?$/.test(path);
-  if (isHome && !document.querySelector('[data-local-photo="bridge"]')) {
-    const anchor = document.querySelector(isEnglish ? '#origins' : '#origens') || document.querySelector('#origins');
-    if (anchor) {
-      const section = makePhotoSection({
-        image: 'ponte-pedonal-cais-faluas-prf-2025.webp',
-        alt: isEnglish ? 'Pedestrian bridge at Cais das Faluas in Montijo at sunset.' : 'Ponte Pedonal do Cais das Faluas, no Montijo, ao pôr do sol.',
-        caption: isEnglish ? 'Pedestrian bridge at Cais das Faluas, Montijo — Photo: PRF, 2025' : 'Ponte Pedonal do Cais das Faluas, Montijo — Foto PRF, 2025',
-        frameClass: 'bridge'
-      });
-      section.dataset.localPhoto = 'bridge';
-      anchor.insertAdjacentElement('afterend', section);
-    }
-  }
-
-  const isAbout = /\/(sobre|about)\.html$/.test(path);
-  if (isAbout && !document.querySelector('[data-local-photo="historic"]')) {
-    const history = [...document.querySelectorAll('main > section')].find((section) => section.querySelector('.tab i')?.textContent.trim() === 'A');
-    if (history) {
-      const commonsUrl = 'https://commons.wikimedia.org/w/index.php?curid=78045659';
-      const licenceUrl = 'https://creativecommons.org/licenses/by-sa/2.0/';
-      const section = makePhotoSection({
-        image: 'centro-historico-vitor-oliveira.webp',
-        alt: isEnglish ? 'Historic centre of Montijo, with traditional buildings and street-level shops.' : 'Centro histórico do Montijo, com edifícios tradicionais e comércio de rua.',
-        caption: isEnglish ? 'Historic centre of Montijo — Photo: ' : 'Centro histórico do Montijo — Foto: ',
-        frameClass: 'historic',
-        creditHtml: `<a href="${commonsUrl}" target="_blank" rel="noopener noreferrer">Vitor Oliveira / Wikimedia Commons</a> · <a href="${licenceUrl}" target="_blank" rel="license noopener noreferrer">CC BY-SA 2.0</a> · ${isEnglish ? 'cropped' : 'imagem recortada'}`
-      });
-      section.dataset.localPhoto = 'historic';
-      history.insertAdjacentElement('afterend', section);
-    }
-  }
-
-  const isContact = /\/(contactos|contact)\.html$/.test(path);
-  if (isContact && !document.querySelector('[data-local-photo="square"]')) {
-    const main = document.querySelector('main');
-    if (main) {
-      const section = document.createElement('section');
-      section.className = 'section soft local-photo-section';
-      section.dataset.localPhoto = 'square';
-      const mapQuery = encodeURIComponent('Rua Cidade de Ponta Delgada, Loja 136, 2870-261 Montijo');
-      section.innerHTML = `<div class="container"><div class="contact-place-head"><p class="kicker">${isEnglish ? 'Montijo · Portugal' : 'Montijo · Portugal'}</p><h2 class="display">${isEnglish ? 'Where to find us.' : 'Onde nos encontra.'}</h2><p>${isEnglish ? 'Our office is in Montijo, and we also support clients remotely throughout Portugal.' : 'O escritório está no Montijo e a equipa acompanha também clientes à distância, em diferentes regiões do país.'}</p></div><div class="contact-place-grid"><figure class="local-photo-figure"><div class="local-photo-frame"><img src="${assetRoot}montijo/praca-republica-prf-2026.webp" alt="${isEnglish ? 'Praça da República in Montijo.' : 'Praça da República, no Montijo.'}" width="1280" height="720" loading="lazy" decoding="async"></div><figcaption class="local-photo-caption">${isEnglish ? 'Praça da República, Montijo — Photo: PRF, 2026' : 'Praça da República, Montijo — Foto PRF, 2026'}</figcaption></figure><div class="contact-map-card"><iframe title="${isEnglish ? 'Map showing the Clave de Números office in Montijo' : 'Mapa com a localização da Clave de Números no Montijo'}" src="https://www.google.com/maps?q=${mapQuery}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="contact-map-meta"><p><strong>Clave de Números</strong><br>Rua Cidade de Ponta Delgada, Loja 136<br>2870-261 Montijo</p><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noopener noreferrer">${isEnglish ? 'Open in Google Maps →' : 'Abrir no Google Maps →'}</a></div></div></div></div>`;
-      main.appendChild(section);
-    }
-  }
+  const mapQuery = encodeURIComponent('Rua Cidade de Ponta Delgada, Loja 136, 2870-261 Montijo');
+  const section = document.createElement('section');
+  section.className = 'section soft local-photo-section';
+  section.dataset.officeMap = '';
+  section.innerHTML = `<div class="container"><div class="contact-place-head"><p class="kicker">Montijo · Portugal</p><h2 class="display">${isEnglish ? 'Where to find us.' : 'Onde nos encontra.'}</h2><p>${isEnglish ? 'Our office is in Montijo, and we also support clients remotely throughout Portugal.' : 'O escritório está no Montijo e a equipa acompanha também clientes à distância, em diferentes regiões do país.'}</p></div><div class="contact-map-card contact-map-card-wide"><iframe title="${isEnglish ? 'Map showing the Clave de Números office in Montijo' : 'Mapa com a localização da Clave de Números no Montijo'}" src="https://www.google.com/maps?q=${mapQuery}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="contact-map-meta"><p><strong>Clave de Números</strong><br>Rua Cidade de Ponta Delgada, Loja 136<br>2870-261 Montijo</p><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noopener noreferrer">${isEnglish ? 'Open in Google Maps →' : 'Abrir no Google Maps →'}</a></div></div></div>`;
+  main.appendChild(section);
 })();
 
 /* Menu mobile */
