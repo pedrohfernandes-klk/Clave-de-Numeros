@@ -8,11 +8,11 @@
       photoClass: 'team-photo-isabel',
       name: 'Isabel Monteiro',
       role: 'Fundadora e Contabilista Certificada',
-      summary: 'Acompanha empresas e empresários com rigor técnico, proximidade e leitura clara da informação contabilística e fiscal.',
+      summary: 'Dirige a Clave de Números e acompanha diretamente os clientes, articulando o conhecimento técnico com a leitura global de cada atividade.',
       paragraphs: [
         'Licenciada em Gestão pela Universidade de Évora, Isabel Monteiro iniciou o seu percurso profissional na elaboração de projetos de investimento para empresas, área que esteve na origem da atividade que viria a dar forma à Clave de Números.',
-        'Como Contabilista Certificada, acompanha empresas, empresários em nome individual e trabalhadores independentes, com especial atenção ao rigor técnico, à leitura clara da informação contabilística e fiscal e à proximidade com cada cliente.',
-        'O seu trabalho combina experiência, disponibilidade e sentido prático, ajudando cada cliente a compreender melhor as suas obrigações e a tomar decisões com mais segurança.'
+        'Como fundadora e Contabilista Certificada, dirige o trabalho da empresa e mantém uma visão transversal sobre os clientes, os respetivos processos e as decisões que exigem maior enquadramento contabilístico, fiscal ou de gestão.',
+        'O seu trabalho combina experiência, autoridade técnica, disponibilidade e conhecimento direto de cada atividade, ajudando os clientes a compreender melhor as suas obrigações e a tomar decisões com mais segurança.'
       ]
     },
     {
@@ -23,7 +23,7 @@
       paragraphs: [
         'A trabalhar na área desde 2020, Gisela Oliveira assegura a coordenação operacional dos processos contabilísticos e fiscais, com especial atenção à organização, ao controlo de prazos e ao acompanhamento regular das empresas clientes.',
         'Mantém contacto direto com os clientes, assegurando um acompanhamento atento, organizado e rigoroso.',
-        'A sua presença discreta, organizada e fiável contribui para que cada processo avance com clareza, método e rigor.'
+        'Articulada, organizada e fiável, contribui para que cada processo avance com clareza, método e rigor.'
       ]
     },
     {
