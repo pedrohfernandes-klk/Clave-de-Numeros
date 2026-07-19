@@ -336,3 +336,18 @@ Os pontos 1 a 6 da lista "Problemas técnicos a corrigir" foram executados:
 - `assets/local-photos.css` e `assets/montijo/*.webp` continuam sem utilização; o mapa do
   escritório usa agora um `iframe` diretamente no HTML da página de contactos.
 - Verificação manual em Safari e Firefox (a passagem automática foi feita em Chromium).
+
+### Estrutura de navegação — "Para quem" (19/07/2026)
+
+"Para quem" era o único item do menu que não tinha página própria: apontava para uma âncora
+dentro da homepage (`index.html#para-quem`), o que o tornava inconsistente com os restantes
+itens e prejudicava a navegação.
+
+Passou a ter página própria:
+
+- `pt/para-quem.html` e `en/who-we-serve.html`, com a mesma estrutura das outras páginas
+  (page-hero + secções), reunindo os quatro perfis, os seis momentos de decisão e as ligações
+  para `para-empresas.html` / `para-particulares.html`.
+- O item 03 do menu aponta agora para a página, em todas as páginas PT e EN.
+- A homepage manteve um resumo dos quatro perfis com ligação para a página completa; a grelha
+  de decisões deixou de estar duplicada.
