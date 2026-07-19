@@ -30,9 +30,12 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
     setText('.hero h1.display', isEnglish
       ? 'Clear accounts.<br><span class="accent">Simple decisions.</span>'
       : 'Contas claras.<br><span class="accent">Decisões simples.</span>');
+    setText('#servicos .section-head h2.display, #services .section-head h2.display', isEnglish
+      ? 'We adapt to your reality.'
+      : 'Adaptamo-nos à sua realidade.');
     setText('#para-quem .section-head h2.display, #who-we-serve .section-head h2.display', isEnglish
-      ? 'Different ways of working. The right support.'
-      : 'Diferentes formas de trabalhar. O acompanhamento certo.');
+      ? 'More clarity, less noise.'
+      : 'Mais clareza, menos ruído.');
   }
 
   if (/\/(servicos|services)\.html$/.test(path)) {
