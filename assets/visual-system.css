@@ -1,5 +1,6 @@
 /* Clave de Números — sistema visual modular
-   Ilustrações principais, pequenos elementos gráficos, miniaturas de guias e movimento discreto. */
+   Uma ilustração principal por página, sinais gráficos discretos,
+   miniaturas próprias para os guias e movimento reduzido. */
 
 :root{
   --vs-ink:#142234;
@@ -8,6 +9,8 @@
   --vs-pink:#d95f8f;
   --vs-paper:#f7f8fa;
   --vs-line:rgba(20,34,52,.14);
+  --vs-line-soft:rgba(20,34,52,.075);
+  --vs-shadow:0 16px 44px rgba(20,34,52,.07);
 }
 
 /* 1. Ilustração principal por página */
@@ -17,6 +20,7 @@
   min-height:320px;
   display:grid;
   place-items:center;
+  overflow:visible;
 }
 .hero-media::before,.page-hero .hero-media::before{
   content:"";
@@ -26,9 +30,9 @@
   border:1px solid var(--vs-line);
   border-radius:28px;
   background:
-    linear-gradient(90deg,transparent 49.7%,rgba(20,34,52,.055) 50%,transparent 50.3%),
-    linear-gradient(transparent 49.7%,rgba(20,34,52,.055) 50%,transparent 50.3%),
-    rgba(255,255,255,.62);
+    linear-gradient(90deg,transparent 49.7%,rgba(20,34,52,.045) 50%,transparent 50.3%),
+    linear-gradient(transparent 49.7%,rgba(20,34,52,.045) 50%,transparent 50.3%),
+    rgba(255,255,255,.64);
   background-size:54px 54px;
 }
 .hero-media::after,.page-hero .hero-media::after{
@@ -39,49 +43,97 @@
   z-index:-1;
   border:1px solid var(--vs-line);
   border-radius:50%;
-  background:radial-gradient(circle at center,rgba(47,181,196,.16) 0 18%,transparent 19% 100%);
+  background:radial-gradient(circle at center,rgba(47,181,196,.15) 0 18%,transparent 19% 100%);
 }
 .hero-media img,.page-hero .hero-media img{
-  width:min(100%,520px);
+  width:min(100%,510px);
   height:auto;
   transform-origin:50% 65%;
-  filter:drop-shadow(0 18px 30px rgba(20,34,52,.075));
+  filter:drop-shadow(0 18px 30px rgba(20,34,52,.07));
 }
 
-body.page-home .hero-media::after{background:radial-gradient(circle at center,rgba(53,105,184,.17) 0 18%,transparent 19% 100%)}
-body.page-services .hero-media::after{border-radius:16px;background:linear-gradient(135deg,rgba(47,181,196,.18),transparent)}
-body.page-profiles .hero-media::after{border-radius:50% 50% 14px 50%;background:rgba(217,95,143,.11)}
-body.page-about .hero-media::after{width:88px;height:44px;border-radius:999px;background:rgba(47,181,196,.12)}
-body.page-guides .hero-media::after{border-radius:12px;background:repeating-linear-gradient(0deg,rgba(53,105,184,.13) 0 2px,transparent 2px 9px)}
-body.page-contact .hero-media::after{border-radius:50% 50% 50% 8px;background:rgba(53,105,184,.12)}
+body.page-home .hero-media::after{background:radial-gradient(circle at center,rgba(53,105,184,.16) 0 18%,transparent 19% 100%)}
+body.page-services .hero-media::after{border-radius:16px;background:linear-gradient(135deg,rgba(47,181,196,.17),transparent)}
+body.page-profiles .hero-media::after{border-radius:50% 50% 14px 50%;background:rgba(217,95,143,.10)}
+body.page-about .hero-media::after{width:88px;height:44px;border-radius:999px;background:rgba(47,181,196,.11)}
+body.page-guides .hero-media::after{border-radius:12px;background:repeating-linear-gradient(0deg,rgba(53,105,184,.12) 0 2px,transparent 2px 9px)}
+body.page-contact .hero-media::after{border-radius:50% 50% 50% 8px;background:rgba(53,105,184,.11)}
 
-/* 2. Vocabulário modular */
+/* pequenas diferenças de composição entre páginas */
+body.page-services .hero-media img{transform:translateX(1.5%)}
+body.page-about .hero-media img{transform:translateY(1%)}
+body.page-guides .hero-media img{transform:translate(-1%,1%)}
+body.page-contact .hero-media img{transform:translateX(-1%)}
+
+/* 2. Ritmo editorial e vocabulário modular */
+.section>.container,.service-card,.post-card,.reason,.service-sheet{position:relative}
+
 .visual-mark{
   position:absolute;
   pointer-events:none;
-  opacity:.7;
-  width:42px;height:42px;
+  opacity:.62;
+  width:38px;height:38px;
   border:1px solid var(--vs-line);
-  border-radius:12px;
+  border-radius:11px;
   background:
-    linear-gradient(var(--vs-line),var(--vs-line)) 10px 12px/20px 1px no-repeat,
-    linear-gradient(var(--vs-line),var(--vs-line)) 10px 20px/14px 1px no-repeat,
-    linear-gradient(var(--vs-line),var(--vs-line)) 10px 28px/18px 1px no-repeat,
-    rgba(255,255,255,.7);
+    linear-gradient(var(--vs-line),var(--vs-line)) 9px 11px/18px 1px no-repeat,
+    linear-gradient(var(--vs-line),var(--vs-line)) 9px 18px/13px 1px no-repeat,
+    linear-gradient(var(--vs-line),var(--vs-line)) 9px 25px/16px 1px no-repeat,
+    rgba(255,255,255,.68);
 }
-.section>.container,.service-card,.post-card,.reason,.service-sheet{position:relative}
 .section>.container>.visual-mark{right:0;top:0}
-.service-card>.visual-mark,.post-card>.visual-mark,.reason>.visual-mark{right:14px;top:14px;width:28px;height:28px;border-radius:8px;opacity:.42;background-size:12px 1px,9px 1px,11px 1px;background-position:7px 8px,7px 13px,7px 18px}
+.service-card>.visual-mark,.post-card>.visual-mark,.reason>.visual-mark{
+  right:13px;top:13px;width:26px;height:26px;border-radius:7px;opacity:.34;
+  background-size:11px 1px,8px 1px,10px 1px;
+  background-position:7px 7px,7px 12px,7px 17px;
+}
 
 .modular-rule{
   display:flex;
   align-items:center;
   gap:10px;
-  margin:24px 0 0;
-  color:rgba(20,34,52,.55);
+  margin:22px 0 2px;
+  color:rgba(20,34,52,.5);
 }
-.modular-rule::before{content:"";width:26px;height:8px;border:1px solid var(--vs-line);border-radius:999px;background:linear-gradient(90deg,var(--vs-blue) 0 32%,transparent 32% 42%,var(--vs-teal) 42% 72%,transparent 72% 82%,var(--vs-pink) 82%)}
+.modular-rule::before{
+  content:"";
+  width:28px;height:8px;
+  border:1px solid var(--vs-line);
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--vs-blue) 0 31%,transparent 31% 41%,var(--vs-teal) 41% 71%,transparent 71% 81%,var(--vs-pink) 81%);
+}
 .modular-rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--vs-line),transparent)}
+
+/* secções mais distintas sem acrescentar peso */
+body.visual-ready main>.section:nth-of-type(even):not(.soft){
+  background-image:linear-gradient(90deg,transparent,rgba(20,34,52,.018),transparent);
+}
+.section-head{max-width:860px}
+.section-head .display,.split>.display{letter-spacing:-.025em}
+
+/* cartões: mais definição, sem aspeto de aplicação */
+.service-card,.post-card,.reason,.service-sheet{
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background-color .28s ease;
+}
+.service-card,.post-card,.reason{
+  overflow:hidden;
+}
+.service-card::after,.post-card::after,.reason::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:0;
+  width:0;height:2px;
+  background:linear-gradient(90deg,var(--vs-blue),var(--vs-teal));
+  transition:width .34s ease;
+}
+
+@media (hover:hover){
+  .service-card:hover,.post-card:hover,.reason:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--vs-shadow);
+  }
+  .service-card:hover::after,.post-card:hover::after,.reason:hover::after{width:100%}
+}
 
 /* 3. Miniaturas específicas dos guias */
 body.page-guides #guias-essenciais .service-grid{align-items:stretch}
@@ -98,6 +150,7 @@ body.page-guides #guias-essenciais .service-card{
   border-bottom:1px solid var(--vs-line);
   background-color:var(--vs-paper);
   background-repeat:no-repeat;
+  transition:transform .35s ease,filter .35s ease;
 }
 .guide-thumb::before,.guide-thumb::after{content:"";position:absolute}
 
@@ -124,17 +177,17 @@ body.page-guides #guias-essenciais .service-card{
 .guide-thumb--company::after{left:65px;top:63px;width:60px;height:1px;background:var(--vs-line);transform:rotate(-35deg);transform-origin:left}
 
 /* tesouraria: fluxo e níveis */
-.guide-thumb--cash{background:linear-gradient(to top,rgba(53,105,184,.12) 0 28%,transparent 28%),var(--vs-paper)}
+.guide-thumb--cash{background:linear-gradient(to top,rgba(53,105,184,.11) 0 28%,transparent 28%),var(--vs-paper)}
 .guide-thumb--cash::before{left:22px;right:22px;bottom:28px;height:56px;border-left:1px solid var(--vs-line);border-bottom:1px solid var(--vs-line);background:linear-gradient(135deg,transparent 0 22%,var(--vs-teal) 22% 23%,transparent 23% 42%,var(--vs-blue) 42% 43%,transparent 43% 62%,var(--vs-pink) 62% 63%,transparent 63%)}
 .guide-thumb--cash::after{right:28px;top:30px;width:12px;height:12px;border:1px solid var(--vs-blue);border-radius:50%}
 
 /* trabalhador: novo elemento na estrutura */
 .guide-thumb--worker{background:var(--vs-paper)}
 .guide-thumb--worker::before{left:25px;top:35px;width:20px;height:20px;border:1px solid var(--vs-line);border-radius:50%;box-shadow:40px 0 0 -1px var(--vs-paper),40px 0 0 0 var(--vs-line),80px 0 0 -1px var(--vs-paper),80px 0 0 0 var(--vs-teal)}
-.guide-thumb--worker::after{left:35px;top:65px;width:80px;height:28px;border:1px solid var(--vs-line);border-radius:8px;background:linear-gradient(90deg,transparent 64%,rgba(47,181,196,.13) 64%)}
+.guide-thumb--worker::after{left:35px;top:65px;width:80px;height:28px;border:1px solid var(--vs-line);border-radius:8px;background:linear-gradient(90deg,transparent 64%,rgba(47,181,196,.12) 64%)}
 
-/* fecho: círculo, validação */
-.guide-thumb--closing{background:conic-gradient(from 25deg at 50% 50%,rgba(53,105,184,.17) 0 23%,transparent 23% 50%,rgba(47,181,196,.16) 50% 72%,transparent 72%),var(--vs-paper)}
+/* fecho: círculo e validação */
+.guide-thumb--closing{background:conic-gradient(from 25deg at 50% 50%,rgba(53,105,184,.16) 0 23%,transparent 23% 50%,rgba(47,181,196,.15) 50% 72%,transparent 72%),var(--vs-paper)}
 .guide-thumb--closing::before{left:50%;top:50%;width:54px;height:54px;border:1px solid var(--vs-line);border-radius:50%;transform:translate(-50%,-50%);background:var(--vs-paper)}
 .guide-thumb--closing::after{left:50%;top:51%;width:24px;height:12px;border-left:2px solid var(--vs-teal);border-bottom:2px solid var(--vs-teal);transform:translate(-45%,-65%) rotate(-45deg)}
 
@@ -143,32 +196,47 @@ body.page-guides #guias-essenciais .service-card{
 .guide-thumb--regimes::before{left:50%;top:22px;width:1px;height:72px;background:var(--vs-line);box-shadow:-34px 40px 0 var(--vs-blue),34px 40px 0 var(--vs-teal)}
 .guide-thumb--regimes::after{left:50%;top:52px;width:70px;height:40px;border-top:1px solid var(--vs-line);border-left:1px solid var(--vs-line);border-right:1px solid var(--vs-line);border-radius:24px 24px 0 0;transform:translateX(-50%)}
 
-/* cartões e secções mais vivos sem ruído */
-.service-card,.post-card,.reason,.service-sheet{
-  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background-color .28s ease;
-}
 @media (hover:hover){
-  .service-card:hover,.post-card:hover,.reason:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(20,34,52,.07)}
-  body.page-guides #guias-essenciais .service-card:hover .guide-thumb{transform:scale(1.015)}
+  body.page-guides #guias-essenciais .service-card:hover .guide-thumb{
+    transform:scale(1.015);
+    filter:saturate(1.04);
+  }
 }
-.guide-thumb{transition:transform .35s ease}
 
 /* 4. Movimento muito discreto */
-@keyframes illustration-settle{0%{opacity:0;transform:translateY(9px) scale(.99)}100%{opacity:1;transform:none}}
-@keyframes mark-breathe{0%,100%{opacity:.42}50%{opacity:.72}}
-body.visual-ready .hero-media img,body.visual-ready .page-hero .hero-media img{animation:illustration-settle .75s cubic-bezier(.2,.75,.25,1) both}
-body.visual-ready .section>.container>.visual-mark{animation:mark-breathe 5.5s ease-in-out infinite}
+@keyframes illustration-settle{0%{opacity:0;transform:translateY(8px) scale(.992)}100%{opacity:1;transform:none}}
+@keyframes mark-breathe{0%,100%{opacity:.34}50%{opacity:.58}}
+body.visual-ready .hero-media img,body.visual-ready .page-hero .hero-media img{animation:illustration-settle .72s cubic-bezier(.2,.75,.25,1) both}
+body.visual-ready .section>.container>.visual-mark{animation:mark-breathe 6.5s ease-in-out infinite}
+
+/* 5. Ajustes de página */
+body.page-services .service-sheet{border-left:2px solid transparent}
+body.page-services .service-sheet:nth-of-type(3n+1){border-left-color:rgba(53,105,184,.25)}
+body.page-services .service-sheet:nth-of-type(3n+2){border-left-color:rgba(47,181,196,.25)}
+body.page-services .service-sheet:nth-of-type(3n){border-left-color:rgba(217,95,143,.22)}
+
+body.page-about .stat-strip{position:relative;overflow:hidden}
+body.page-about .stat-strip::after{content:"";position:absolute;right:18px;top:16px;width:48px;height:1px;background:linear-gradient(90deg,var(--vs-blue),var(--vs-teal))}
+
+body.page-contact [data-office-map]{position:relative}
+body.page-contact [data-office-map]::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--vs-line),transparent)}
+
+@media(max-width:980px){
+  .hero-media,.page-hero .hero-media{min-height:285px}
+  .hero-media img,.page-hero .hero-media img{width:min(96%,450px)}
+}
 
 @media(max-width:760px){
-  .hero-media,.page-hero .hero-media{min-height:250px}
+  .hero-media,.page-hero .hero-media{min-height:235px}
   .hero-media::before,.page-hero .hero-media::before{inset:8% 1% 8% 4%;border-radius:20px;background-size:42px 42px}
-  .hero-media img,.page-hero .hero-media img{width:min(94%,420px)}
+  .hero-media img,.page-hero .hero-media img{width:min(92%,390px);transform:none!important}
   .section>.container>.visual-mark{display:none}
+  .modular-rule{margin-top:16px}
   body.page-guides #guias-essenciais .service-card{padding-top:132px;min-height:0}
   .guide-thumb{height:112px}
 }
 
 @media(prefers-reduced-motion:reduce){
   body.visual-ready .hero-media img,body.visual-ready .page-hero .hero-media img,body.visual-ready .section>.container>.visual-mark{animation:none}
-  .service-card,.post-card,.reason,.service-sheet,.guide-thumb{transition:none}
+  .service-card,.post-card,.reason,.service-sheet,.guide-thumb,.service-card::after,.post-card::after,.reason::after{transition:none}
 }
