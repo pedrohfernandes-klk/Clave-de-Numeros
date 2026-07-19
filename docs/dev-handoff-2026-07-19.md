@@ -351,3 +351,27 @@ Passou a ter página própria:
 - O item 03 do menu aponta agora para a página, em todas as páginas PT e EN.
 - A homepage manteve um resumo dos quatro perfis com ligação para a página completa; a grelha
   de decisões deixou de estar duplicada.
+
+### Hierarquia dos perfis — quatro páginas (19/07/2026)
+
+A divisão em quatro perfis existia na apresentação mas não na estrutura: "Empresas",
+"ENI e independentes" e "Negócios online" eram três secções dentro de `para-empresas.html`,
+e só "Particulares" tinha página própria. Os quatro cartões apareciam como pares mas
+resolviam para dois destinos, o que quebrava a hierarquia.
+
+Cada perfil passou a ter a sua página, todas com a mesma estrutura (hero, situações típicas,
+serviços relevantes, perguntas frequentes, fecho):
+
+| Perfil | PT | EN |
+| --- | --- | --- |
+| 01 Empresas e sociedades | `para-empresas.html` | `for-businesses.html` |
+| 02 ENI e independentes | `para-independentes.html` | `for-self-employed.html` |
+| 03 Negócios online | `para-negocios-online.html` | `for-online-businesses.html` |
+| 04 Particulares | `para-particulares.html` | `for-individuals.html` |
+
+Os blocos que antes eram partilhados foram distribuídos por perfil, sem repetição: cada
+página tem os quatro serviços que lhe dizem respeito e as perguntas frequentes da sua
+situação. As antigas âncoras (`para-empresas.html#independentes`, etc.) foram religadas às
+páginas novas em todo o site.
+
+Hierarquia final: **Para quem** (hub) → **quatro páginas de perfil** → fichas de serviço.
