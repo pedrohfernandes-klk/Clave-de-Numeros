@@ -14,16 +14,38 @@
   .stat-strip{margin-top:0}
 }
 
-/* Equipa — fotografias pequenas e discretas. */
+/* Equipa — cartões equilibrados e perfis expansíveis. */
 #equipa .team-grid-hierarchy{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-#equipa .member{display:grid;grid-template-columns:92px minmax(0,1fr);align-items:start;min-height:0;overflow:hidden}
-#equipa .member>[class^="team-photo-"]{width:72px;height:90px;min-height:0!important;aspect-ratio:auto!important;margin:16px 0 16px 16px;border-radius:10px;background-size:cover;background-position:center;background-repeat:no-repeat}
-#equipa .member figcaption{padding:16px 18px}
-#equipa .member figcaption p{font-size:.92rem;line-height:1.52}
+#equipa .member{display:grid;grid-template-columns:108px minmax(0,1fr);align-items:start;min-height:0;overflow:hidden}
+#equipa .member>[class*="team-photo-"]{width:84px;height:105px;min-height:0!important;aspect-ratio:auto!important;margin:16px 0 16px 16px;border-radius:11px;background-size:cover;background-position:center;background-repeat:no-repeat}
+#equipa .team-profile-summary{padding:16px 18px}
+#equipa .team-profile-summary>b{display:block;font-size:1.04rem;line-height:1.25}
+#equipa .team-profile-summary>small{display:block;margin-top:4px;line-height:1.4}
+#equipa .team-profile-summary p{font-size:.92rem;line-height:1.52}
 #equipa .member-founder,#equipa .member-operations{grid-column:auto;box-shadow:none}
 #equipa .member-founder{border-color:rgba(53,105,184,.28)}
-#equipa .member-founder b{font-size:1.04rem}
 #equipa .member-operations{border-color:rgba(47,181,196,.24)}
+.team-profile-card{border:1px solid rgba(20,34,52,.13);border-radius:15px;background:rgba(255,255,255,.66)}
+.team-profile-button{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:0;border:0;background:transparent;color:inherit;font:600 .78rem/1.2 "IBM Plex Mono",monospace;letter-spacing:.035em;text-transform:uppercase;cursor:pointer}
+.team-profile-button span{transition:transform .2s ease}
+.team-profile-button:hover span,.team-profile-button:focus-visible span{transform:translateX(3px)}
+.team-profile-button:focus-visible,.team-profile-close:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+
+.team-profile-dialog{width:min(900px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:0;border:0;border-radius:22px;background:#fff;color:#142234;box-shadow:0 28px 90px rgba(20,34,52,.24);overflow:auto}
+.team-profile-dialog::backdrop{background:rgba(20,34,52,.46);backdrop-filter:blur(3px)}
+.team-profile-dialog[open]{animation:team-dialog-in .22s cubic-bezier(.2,.75,.25,1) both}
+.team-profile-dialog-card{position:relative;padding:24px}
+.team-profile-dialog-grid{display:grid;grid-template-columns:minmax(220px,34%) minmax(0,1fr);gap:34px;align-items:start}
+.team-profile-dialog-photo{width:100%;min-height:410px!important;aspect-ratio:4/5!important;margin:0!important;border-radius:16px;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+.team-profile-dialog-copy{padding:28px 30px 22px 0}
+.team-profile-dialog-copy .display{margin:.25rem 0 .45rem;font-size:clamp(2rem,4vw,3.35rem);line-height:1}
+.team-profile-role{margin:0 0 22px;font-weight:600;color:rgba(20,34,52,.68)}
+.team-profile-body{max-width:58ch}
+.team-profile-body p{margin:0 0 1rem;line-height:1.68}
+.team-profile-close{position:sticky;top:14px;z-index:2;float:right;display:inline-flex;align-items:center;gap:8px;margin:0 0 -42px auto;padding:9px 12px;border:1px solid rgba(20,34,52,.16);border-radius:999px;background:rgba(255,255,255,.94);color:inherit;font:600 .76rem/1 "IBM Plex Mono",monospace;cursor:pointer}
+.team-profile-close span{font-size:1.1rem;line-height:.7}
+html.team-dialog-open{overflow:hidden}
+@keyframes team-dialog-in{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
 
 /* Testemunhos — seis depoimentos completos, todos com a mesma hierarquia. */
 .testimonial-carousel{position:relative}
@@ -42,5 +64,20 @@
 .testimonial-carousel.is-static .testimonial-controls{display:none}
 
 @media(max-width:980px){.testimonial-slide{flex-basis:calc((100% - 14px)/2)}}
-@media(max-width:760px){#equipa .team-grid-hierarchy{grid-template-columns:1fr}#equipa .member{grid-template-columns:82px minmax(0,1fr)}#equipa .member>[class^="team-photo-"]{width:62px;height:78px;margin:14px 0 14px 14px}#equipa .member figcaption{padding:14px 14px 14px 10px}.testimonial-slide{flex-basis:100%;padding:18px}.testimonial-slide blockquote{font-size:.95rem}.testimonial-controls{justify-content:center}}
-@media(prefers-reduced-motion:reduce){.testimonial-track{transition:none}}
+@media(max-width:760px){
+  #equipa .team-grid-hierarchy{grid-template-columns:1fr}
+  #equipa .member{grid-template-columns:90px minmax(0,1fr)}
+  #equipa .member>[class*="team-photo-"]{width:68px;height:85px;margin:14px 0 14px 14px}
+  #equipa .team-profile-summary{padding:14px 14px 14px 10px}
+  .team-profile-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 20px);border-radius:17px}
+  .team-profile-dialog-card{padding:14px}
+  .team-profile-dialog-grid{grid-template-columns:1fr;gap:18px}
+  .team-profile-dialog-photo{min-height:0!important;height:min(42vh,310px)!important;aspect-ratio:auto!important;background-position:center 28%!important}
+  .team-profile-dialog-copy{padding:0 6px 12px}
+  .team-profile-dialog-copy .display{font-size:2rem}
+  .team-profile-close{top:8px;margin-bottom:-45px}
+  .testimonial-slide{flex-basis:100%;padding:18px}
+  .testimonial-slide blockquote{font-size:.95rem}
+  .testimonial-controls{justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){.testimonial-track{transition:none}.team-profile-dialog[open]{animation:none}.team-profile-button span{transition:none}}
