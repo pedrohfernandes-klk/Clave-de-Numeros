@@ -1,0 +1,174 @@
+/* Clave de Números — sistema visual modular
+   Ilustrações principais, pequenos elementos gráficos, miniaturas de guias e movimento discreto. */
+
+:root{
+  --vs-ink:#142234;
+  --vs-blue:#3569b8;
+  --vs-teal:#2fb5c4;
+  --vs-pink:#d95f8f;
+  --vs-paper:#f7f8fa;
+  --vs-line:rgba(20,34,52,.14);
+}
+
+/* 1. Ilustração principal por página */
+.hero-media,.page-hero .hero-media{
+  position:relative;
+  isolation:isolate;
+  min-height:320px;
+  display:grid;
+  place-items:center;
+}
+.hero-media::before,.page-hero .hero-media::before{
+  content:"";
+  position:absolute;
+  inset:9% 5% 7% 8%;
+  z-index:-2;
+  border:1px solid var(--vs-line);
+  border-radius:28px;
+  background:
+    linear-gradient(90deg,transparent 49.7%,rgba(20,34,52,.055) 50%,transparent 50.3%),
+    linear-gradient(transparent 49.7%,rgba(20,34,52,.055) 50%,transparent 50.3%),
+    rgba(255,255,255,.62);
+  background-size:54px 54px;
+}
+.hero-media::after,.page-hero .hero-media::after{
+  content:"";
+  position:absolute;
+  width:72px;height:72px;
+  right:2%;bottom:3%;
+  z-index:-1;
+  border:1px solid var(--vs-line);
+  border-radius:50%;
+  background:radial-gradient(circle at center,rgba(47,181,196,.16) 0 18%,transparent 19% 100%);
+}
+.hero-media img,.page-hero .hero-media img{
+  width:min(100%,520px);
+  height:auto;
+  transform-origin:50% 65%;
+  filter:drop-shadow(0 18px 30px rgba(20,34,52,.075));
+}
+
+body.page-home .hero-media::after{background:radial-gradient(circle at center,rgba(53,105,184,.17) 0 18%,transparent 19% 100%)}
+body.page-services .hero-media::after{border-radius:16px;background:linear-gradient(135deg,rgba(47,181,196,.18),transparent)}
+body.page-profiles .hero-media::after{border-radius:50% 50% 14px 50%;background:rgba(217,95,143,.11)}
+body.page-about .hero-media::after{width:88px;height:44px;border-radius:999px;background:rgba(47,181,196,.12)}
+body.page-guides .hero-media::after{border-radius:12px;background:repeating-linear-gradient(0deg,rgba(53,105,184,.13) 0 2px,transparent 2px 9px)}
+body.page-contact .hero-media::after{border-radius:50% 50% 50% 8px;background:rgba(53,105,184,.12)}
+
+/* 2. Vocabulário modular */
+.visual-mark{
+  position:absolute;
+  pointer-events:none;
+  opacity:.7;
+  width:42px;height:42px;
+  border:1px solid var(--vs-line);
+  border-radius:12px;
+  background:
+    linear-gradient(var(--vs-line),var(--vs-line)) 10px 12px/20px 1px no-repeat,
+    linear-gradient(var(--vs-line),var(--vs-line)) 10px 20px/14px 1px no-repeat,
+    linear-gradient(var(--vs-line),var(--vs-line)) 10px 28px/18px 1px no-repeat,
+    rgba(255,255,255,.7);
+}
+.section>.container,.service-card,.post-card,.reason,.service-sheet{position:relative}
+.section>.container>.visual-mark{right:0;top:0}
+.service-card>.visual-mark,.post-card>.visual-mark,.reason>.visual-mark{right:14px;top:14px;width:28px;height:28px;border-radius:8px;opacity:.42;background-size:12px 1px,9px 1px,11px 1px;background-position:7px 8px,7px 13px,7px 18px}
+
+.modular-rule{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:24px 0 0;
+  color:rgba(20,34,52,.55);
+}
+.modular-rule::before{content:"";width:26px;height:8px;border:1px solid var(--vs-line);border-radius:999px;background:linear-gradient(90deg,var(--vs-blue) 0 32%,transparent 32% 42%,var(--vs-teal) 42% 72%,transparent 72% 82%,var(--vs-pink) 82%)}
+.modular-rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--vs-line),transparent)}
+
+/* 3. Miniaturas específicas dos guias */
+body.page-guides #guias-essenciais .service-grid{align-items:stretch}
+body.page-guides #guias-essenciais .service-card{
+  overflow:hidden;
+  padding-top:148px;
+  min-height:310px;
+}
+.guide-thumb{
+  position:absolute;
+  left:0;right:0;top:0;
+  height:126px;
+  overflow:hidden;
+  border-bottom:1px solid var(--vs-line);
+  background-color:var(--vs-paper);
+  background-repeat:no-repeat;
+}
+.guide-thumb::before,.guide-thumb::after{content:"";position:absolute}
+
+/* documentação: pastas e folhas */
+.guide-thumb--documents{
+  background:
+    linear-gradient(var(--vs-blue),var(--vs-blue)) 28px 40px/44px 2px,
+    linear-gradient(var(--vs-line),var(--vs-line)) 28px 52px/62px 1px,
+    linear-gradient(var(--vs-line),var(--vs-line)) 28px 64px/52px 1px,
+    linear-gradient(var(--vs-teal),var(--vs-teal)) calc(100% - 68px) 34px/2px 58px,
+    var(--vs-paper);
+}
+.guide-thumb--documents::before{left:22px;top:28px;width:78px;height:70px;border:1px solid var(--vs-line);border-radius:8px;background:rgba(255,255,255,.75)}
+.guide-thumb--documents::after{right:24px;top:44px;width:38px;height:42px;border:1px solid var(--vs-line);border-radius:5px;box-shadow:-9px 9px 0 -1px var(--vs-paper),-9px 9px 0 0 var(--vs-line)}
+
+/* sistema: grelha contabilística */
+.guide-thumb--system{background:linear-gradient(90deg,transparent 49.5%,var(--vs-line) 50%,transparent 50.5%),linear-gradient(transparent 49.5%,var(--vs-line) 50%,transparent 50.5%),var(--vs-paper);background-size:34px 34px}
+.guide-thumb--system::before{inset:24px 30px;border:1px solid var(--vs-blue);border-radius:50%;background:radial-gradient(circle,var(--vs-teal) 0 4px,transparent 5px)}
+.guide-thumb--system::after{left:50%;top:18px;width:1px;height:90px;background:var(--vs-pink);transform:rotate(34deg)}
+
+/* empresa: módulos que se agregam */
+.guide-thumb--company{background:var(--vs-paper)}
+.guide-thumb--company::before{left:28px;top:26px;width:38px;height:38px;border:1px solid var(--vs-blue);border-radius:8px;box-shadow:48px 0 0 -1px var(--vs-paper),48px 0 0 0 var(--vs-line),24px 44px 0 -1px var(--vs-paper),24px 44px 0 0 var(--vs-teal)}
+.guide-thumb--company::after{left:65px;top:63px;width:60px;height:1px;background:var(--vs-line);transform:rotate(-35deg);transform-origin:left}
+
+/* tesouraria: fluxo e níveis */
+.guide-thumb--cash{background:linear-gradient(to top,rgba(53,105,184,.12) 0 28%,transparent 28%),var(--vs-paper)}
+.guide-thumb--cash::before{left:22px;right:22px;bottom:28px;height:56px;border-left:1px solid var(--vs-line);border-bottom:1px solid var(--vs-line);background:linear-gradient(135deg,transparent 0 22%,var(--vs-teal) 22% 23%,transparent 23% 42%,var(--vs-blue) 42% 43%,transparent 43% 62%,var(--vs-pink) 62% 63%,transparent 63%)}
+.guide-thumb--cash::after{right:28px;top:30px;width:12px;height:12px;border:1px solid var(--vs-blue);border-radius:50%}
+
+/* trabalhador: novo elemento na estrutura */
+.guide-thumb--worker{background:var(--vs-paper)}
+.guide-thumb--worker::before{left:25px;top:35px;width:20px;height:20px;border:1px solid var(--vs-line);border-radius:50%;box-shadow:40px 0 0 -1px var(--vs-paper),40px 0 0 0 var(--vs-line),80px 0 0 -1px var(--vs-paper),80px 0 0 0 var(--vs-teal)}
+.guide-thumb--worker::after{left:35px;top:65px;width:80px;height:28px;border:1px solid var(--vs-line);border-radius:8px;background:linear-gradient(90deg,transparent 64%,rgba(47,181,196,.13) 64%)}
+
+/* fecho: círculo, validação */
+.guide-thumb--closing{background:conic-gradient(from 25deg at 50% 50%,rgba(53,105,184,.17) 0 23%,transparent 23% 50%,rgba(47,181,196,.16) 50% 72%,transparent 72%),var(--vs-paper)}
+.guide-thumb--closing::before{left:50%;top:50%;width:54px;height:54px;border:1px solid var(--vs-line);border-radius:50%;transform:translate(-50%,-50%);background:var(--vs-paper)}
+.guide-thumb--closing::after{left:50%;top:51%;width:24px;height:12px;border-left:2px solid var(--vs-teal);border-bottom:2px solid var(--vs-teal);transform:translate(-45%,-65%) rotate(-45deg)}
+
+/* regimes: bifurcação */
+.guide-thumb--regimes{background:var(--vs-paper)}
+.guide-thumb--regimes::before{left:50%;top:22px;width:1px;height:72px;background:var(--vs-line);box-shadow:-34px 40px 0 var(--vs-blue),34px 40px 0 var(--vs-teal)}
+.guide-thumb--regimes::after{left:50%;top:52px;width:70px;height:40px;border-top:1px solid var(--vs-line);border-left:1px solid var(--vs-line);border-right:1px solid var(--vs-line);border-radius:24px 24px 0 0;transform:translateX(-50%)}
+
+/* cartões e secções mais vivos sem ruído */
+.service-card,.post-card,.reason,.service-sheet{
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background-color .28s ease;
+}
+@media (hover:hover){
+  .service-card:hover,.post-card:hover,.reason:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(20,34,52,.07)}
+  body.page-guides #guias-essenciais .service-card:hover .guide-thumb{transform:scale(1.015)}
+}
+.guide-thumb{transition:transform .35s ease}
+
+/* 4. Movimento muito discreto */
+@keyframes illustration-settle{0%{opacity:0;transform:translateY(9px) scale(.99)}100%{opacity:1;transform:none}}
+@keyframes mark-breathe{0%,100%{opacity:.42}50%{opacity:.72}}
+body.visual-ready .hero-media img,body.visual-ready .page-hero .hero-media img{animation:illustration-settle .75s cubic-bezier(.2,.75,.25,1) both}
+body.visual-ready .section>.container>.visual-mark{animation:mark-breathe 5.5s ease-in-out infinite}
+
+@media(max-width:760px){
+  .hero-media,.page-hero .hero-media{min-height:250px}
+  .hero-media::before,.page-hero .hero-media::before{inset:8% 1% 8% 4%;border-radius:20px;background-size:42px 42px}
+  .hero-media img,.page-hero .hero-media img{width:min(94%,420px)}
+  .section>.container>.visual-mark{display:none}
+  body.page-guides #guias-essenciais .service-card{padding-top:132px;min-height:0}
+  .guide-thumb{height:112px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.visual-ready .hero-media img,body.visual-ready .page-hero .hero-media img,body.visual-ready .section>.container>.visual-mark{animation:none}
+  .service-card,.post-card,.reason,.service-sheet,.guide-thumb{transition:none}
+}
