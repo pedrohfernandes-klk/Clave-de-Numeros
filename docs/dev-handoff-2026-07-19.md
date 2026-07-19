@@ -192,13 +192,10 @@ Recomendação:
 - remover regras obsoletas e duplicadas;
 - documentar tokens de espaçamento, raio, sombra e cor.
 
-### 5. Corrigir dados institucionais remanescentes
+### 5. Dados institucionais — RESOLVIDO
 
-O CAE correto é:
-
-`69200 — Contabilidade, auditoria e consultoria fiscal`
-
-Existem páginas cujo rodapé ainda apresenta `69201`. Corrigir em todas as páginas PT e EN.
+Confirmado com o cliente em 19/07/2026: o CAE a utilizar é **69201**, presente em todas as
+páginas PT e EN. Telefone `+351 210 860 020` e horário `9h00–18h00` também confirmados.
 
 ### 6. Rever versão inglesa
 
@@ -296,3 +293,46 @@ Melhorar o ritmo sem acrescentar decoração:
 5. substituir as fotografias em CSS por ficheiros WebP reais;
 6. alinhar completamente a versão inglesa;
 7. realizar auditoria final de acessibilidade, desempenho e responsividade.
+
+
+---
+
+## Estado em 19/07/2026 (segunda passagem)
+
+Os pontos 1 a 6 da lista "Problemas técnicos a corrigir" foram executados:
+
+1. **Conteúdo editorial injetado por JS — resolvido.** Os 12 blocos `setText`, a remoção do
+   antigo item "Blogue" da navegação, a secção da equipa e o mapa do escritório passaram
+   para HTML. O `assets/script.js` caiu de 17,8 KB para ~7,4 KB e trata apenas de
+   comportamento (menu, reveals, método, filtros, carrossel, formulário, barra de leitura).
+2. **Perfis expansíveis — resolvido.** O `team-profiles.js` é carregado com `defer`
+   diretamente em `pt/sobre.html` e `en/about.html`, e limita-se a abrir/fechar o `dialog`.
+   Os textos completos vivem no HTML (`[data-team-full]`). O cartão inteiro é clicável,
+   incluindo a fotografia.
+3. **Fotografias em CSS — resolvido.** Passaram a quatro WebP reais em `assets/equipa/`
+   (600×750, ~55 KB cada), com `<img width height loading="lazy" decoding="async">` e
+   `object-fit: cover`. As quatro folhas `*-photo.css` com `data URI` foram removidas.
+   Nota: a fotografia da Isabel estava efetivamente corrompida no HEAD anterior (a base64
+   não era um WebP válido e falhava a descodificação); foi regerada a partir do original.
+4. **CSS** — `visual-system.css` passou a ser ligado no HTML de todas as páginas. Corrigido
+   um bug em que era injetado com caminho relativo fixo (`../assets/`), o que dava 404 nas
+   páginas a dois níveis (os sete guias e o blogue EN).
+5. **Dados institucionais** — ver acima.
+6. **Versão inglesa — paridade total.** Criados `en/guides.html` (biblioteca),
+   `en/glossary.html` (43 conceitos) e os sete guias em `en/guides/`. O antigo `en/blog/`
+   passou a redirects. `hreflang` recíproco em todas as páginas e sitemap atualizado.
+
+### Também corrigido
+
+- Alinhamento da secção "Para quem": tinha `flush-top` (padding-top: 0) e era a única
+  secção fora do ritmo vertical das restantes.
+- Homepage PT e EN ligavam a âncoras que deixaram de existir na biblioteca de guias.
+
+### Continua em aberto
+
+- **Endpoint do formulário** (`formspree.io/f/SUBSTITUIR-ENDPOINT`) — o formulário não
+  envia até ser substituído.
+- **Revisão jurídica** das páginas de Privacidade e Aviso Legal (PT e EN).
+- `assets/local-photos.css` e `assets/montijo/*.webp` continuam sem utilização; o mapa do
+  escritório usa agora um `iframe` diretamente no HTML da página de contactos.
+- Verificação manual em Safari e Firefox (a passagem automática foi feita em Chromium).
