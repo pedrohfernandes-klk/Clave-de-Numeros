@@ -16,7 +16,7 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   }
 });
 
-/* Títulos editoriais principais, alinhados entre PT e EN. */
+/* Títulos e textos editoriais principais, alinhados entre PT e EN. */
 (() => {
   const path = window.location.pathname;
   const isEnglish = /\/en\//.test(path);
@@ -33,9 +33,27 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
     setText('#servicos .section-head h2.display, #services .section-head h2.display', isEnglish
       ? 'We adapt to your reality.'
       : 'Adaptamo-nos à sua realidade.');
+    setText('#servicos .section-head p, #services .section-head p', isEnglish
+      ? 'Every company and activity has its own needs. Our accounting, tax and management services adapt to each client’s framework, size, tax obligations and way of working. The service sheets explain what is included, when it is useful and how the support is provided.'
+      : 'Cada empresa e atividade têm necessidades próprias. Os nossos serviços de contabilidade, fiscalidade e gestão ajustam-se ao enquadramento, dimensão, obrigações fiscais e forma de trabalho de cada cliente. Nas fichas de serviço explicamos o que está incluído, quando é útil e como é feito o acompanhamento.');
     setText('#para-quem .section-head h2.display, #who-we-serve .section-head h2.display', isEnglish
       ? 'More clarity, less noise.'
       : 'Mais clareza, menos ruído.');
+    setText('#para-quem .section-head p, #who-we-serve .section-head p', isEnglish
+      ? 'A company, an independent activity, an online business or a specific tax situation all involve different obligations. Identify the profile closest to your reality and discover the areas in which Clave de Números can support your activity.'
+      : 'Uma sociedade, uma atividade independente, um negócio online ou uma situação fiscal específica têm obrigações diferentes. Identifique o perfil mais próximo da sua realidade e conheça as áreas em que a Clave de Números pode acompanhar a sua atividade.');
+
+    const origin = document.querySelector('#origem .split > div, #origins .split > div');
+    if (origin) {
+      const paragraph = origin.querySelector('p');
+      const highlight = origin.querySelector('blockquote');
+      if (paragraph) paragraph.textContent = isEnglish
+        ? 'Clave de Números grew from a professional path that began in 2011 with the preparation of investment projects for companies. Accounting developed naturally in response to clients’ needs, and the company was incorporated in 2013. Since then, it has grown consistently while maintaining close, long-term relationships.'
+        : 'A Clave de Números nasceu de um percurso iniciado em 2011 na elaboração de projetos de investimento para empresas. A contabilidade surgiu naturalmente, como resposta às necessidades dos clientes, e a empresa foi constituída em 2013. Desde então, tem crescido de forma consistente, mantendo relações próximas e duradouras.';
+      if (highlight) highlight.textContent = isEnglish
+        ? 'Responsiveness, availability and rigour continue to distinguish Clave de Números.'
+        : 'Rapidez de resposta, disponibilidade e rigor continuam a distinguir a Clave de Números.';
+    }
   }
 
   if (/\/(servicos|services)\.html$/.test(path)) {
