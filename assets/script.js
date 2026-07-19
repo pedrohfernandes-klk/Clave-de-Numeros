@@ -54,6 +54,73 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   }
 })();
 
+/* Sistema visual modular: uma ilustração principal por página, pequenos sinais gráficos e capas dos guias. */
+(() => {
+  const path = window.location.pathname;
+  const body = document.body;
+  const stylesheet = document.createElement('link');
+  stylesheet.rel = 'stylesheet';
+  stylesheet.href = '../assets/visual-system.css';
+  document.head.appendChild(stylesheet);
+
+  const pageClass = /\/(servicos|services)\.html$/.test(path) ? 'page-services'
+    : /\/(para-empresas|for-businesses|para-particulares|for-individuals)\.html$/.test(path) ? 'page-profiles'
+    : /\/(sobre|about)\.html$/.test(path) ? 'page-about'
+    : /\/(guias|guides)\.html$/.test(path) ? 'page-guides'
+    : /\/(contactos|contact)\.html$/.test(path) ? 'page-contact'
+    : /\/(pt|en)\/?(?:index\.html)?$/.test(path) ? 'page-home'
+    : 'page-content';
+  body.classList.add(pageClass);
+
+  document.querySelectorAll('.hero-media, .page-hero .hero-media').forEach((media) => media.classList.add('visual-hero'));
+
+  document.querySelectorAll('main > .section > .container').forEach((container, index) => {
+    if (index % 2 !== 0 || container.querySelector(':scope > .visual-mark')) return;
+    const mark = document.createElement('span');
+    mark.className = 'visual-mark';
+    mark.setAttribute('aria-hidden', 'true');
+    container.prepend(mark);
+  });
+
+  document.querySelectorAll('.service-card, .post-card, .reason').forEach((card, index) => {
+    if (index % 3 !== 1 || card.querySelector(':scope > .visual-mark')) return;
+    const mark = document.createElement('span');
+    mark.className = 'visual-mark';
+    mark.setAttribute('aria-hidden', 'true');
+    card.appendChild(mark);
+  });
+
+  document.querySelectorAll('.section-head, .split').forEach((block, index) => {
+    if (index % 3 !== 0 || block.nextElementSibling?.classList.contains('modular-rule')) return;
+    const rule = document.createElement('div');
+    rule.className = 'modular-rule';
+    rule.setAttribute('aria-hidden', 'true');
+    block.insertAdjacentElement('afterend', rule);
+  });
+
+  if (body.classList.contains('page-guides')) {
+    const guideType = (href) => {
+      if (/document|documentacao/.test(href)) return 'documents';
+      if (/sistema|system/.test(href)) return 'system';
+      if (/abrir-empresa|open-company/.test(href)) return 'company';
+      if (/lucro|caixa|tesouraria|cash|profit/.test(href)) return 'cash';
+      if (/trabalhador|worker|employee/.test(href)) return 'worker';
+      if (/fecho|inventar|closing|year-end/.test(href)) return 'closing';
+      return 'regimes';
+    };
+    const guideCards = document.querySelectorAll('#guias-essenciais .service-card, #essential-guides .service-card');
+    guideCards.forEach((card) => {
+      if (card.querySelector('.guide-thumb')) return;
+      const thumb = document.createElement('span');
+      thumb.className = `guide-thumb guide-thumb--${guideType(card.getAttribute('href') || '')}`;
+      thumb.setAttribute('aria-hidden', 'true');
+      card.prepend(thumb);
+    });
+  }
+
+  requestAnimationFrame(() => body.classList.add('visual-ready'));
+})();
+
 /* Mapa da morada nas páginas de contacto. */
 (() => {
   const path = window.location.pathname;
