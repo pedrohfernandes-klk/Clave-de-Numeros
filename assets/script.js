@@ -16,6 +16,44 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   }
 });
 
+/* Títulos editoriais principais, alinhados entre PT e EN. */
+(() => {
+  const path = window.location.pathname;
+  const isEnglish = /\/en\//.test(path);
+  const setText = (selector, html) => {
+    const element = document.querySelector(selector);
+    if (element) element.innerHTML = html;
+  };
+
+  const isHome = /\/(pt|en)\/?(?:index\.html)?$/.test(path);
+  if (isHome) {
+    setText('.hero h1.display', isEnglish
+      ? 'Clear accounts.<br><span class="accent">Simple decisions.</span>'
+      : 'Contas claras.<br><span class="accent">Decisões simples.</span>');
+    setText('#para-quem .section-head h2.display, #who-we-serve .section-head h2.display', isEnglish
+      ? 'Different ways of working. The right support.'
+      : 'Diferentes formas de trabalhar. O acompanhamento certo.');
+  }
+
+  if (/\/(servicos|services)\.html$/.test(path)) {
+    setText('.page-hero h1.display', isEnglish
+      ? 'Organise. Support. Decide.'
+      : 'Organizar. Acompanhar. Decidir.');
+  }
+
+  if (/\/(sobre|about)\.html$/.test(path)) {
+    setText('.page-hero h1.display', isEnglish
+      ? 'A firm built on relationships.'
+      : 'Uma empresa de relações.');
+  }
+
+  if (/\/(guias|guides)\.html$/.test(path)) {
+    setText('.page-hero h1.display', isEnglish
+      ? 'Understand and organise your activity.'
+      : 'Conheça e organize a sua atividade.');
+  }
+})();
+
 /* Mapa da morada nas páginas de contacto. */
 (() => {
   const path = window.location.pathname;
