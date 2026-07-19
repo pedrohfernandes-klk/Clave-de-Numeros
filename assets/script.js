@@ -1,141 +1,20 @@
-/* CLAVE DE NÚMEROS · interações globais */
+/* CLAVE DE NÚMEROS · comportamento
+   Todo o conteúdo editorial, a navegação e o sistema visual vivem no HTML.
+   Este ficheiro trata apenas de interação. */
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* Navegação: retirar a antiga área de blogue e corrigir numeração. */
-document.querySelectorAll('.nav-links a, .footer a').forEach((link) => {
-  const href = link.getAttribute('href') || '';
-  if (/(^|\/)blogue\//.test(href) || /(^|\/)blog\//.test(href) || ['Blogue', 'Blog'].includes(link.textContent.trim())) {
-    const row = link.closest('.footer p');
-    if (row) row.remove(); else link.remove();
-  }
-});
-document.querySelectorAll('.nav-links a').forEach((link) => {
-  if (/contactos\.html$|contact\.html$/.test(link.getAttribute('href') || '')) {
-    const number = link.querySelector('span');
-    if (number) number.textContent = '06';
-  }
-});
-
-/* Textos editoriais alinhados entre PT e EN. */
+/* Mapa do escritório (página de contactos). */
 (() => {
-  const path = window.location.pathname;
-  const isEnglish = /\/en\//.test(path);
-  const setText = (selector, html) => {
-    const element = document.querySelector(selector);
-    if (element) element.innerHTML = html;
-  };
-
-  const isHome = /\/(pt|en)\/?(?:index\.html)?$/.test(path);
-  if (isHome) {
-    setText('.hero h1.display', isEnglish
-      ? 'Clear accounts.<br><span class="accent">Simple decisions.</span>'
-      : 'Contas claras.<br><span class="accent">Decisões simples.</span>');
-    setText('#servicos .section-head h2.display, #services .section-head h2.display', isEnglish ? 'We adapt to your reality.' : 'Adaptamo-nos à sua realidade.');
-    setText('#servicos .section-head p, #services .section-head p', isEnglish
-      ? 'Every company and activity has its own needs. Our accounting, tax and management services adapt to each client’s framework, size, tax obligations and way of working. The service sheets explain what is included, when it is useful and how the support is provided.'
-      : 'Cada empresa e atividade têm necessidades próprias. Os nossos serviços de contabilidade, fiscalidade e gestão ajustam-se ao enquadramento, dimensão, obrigações fiscais e forma de trabalho de cada cliente. Nas fichas de serviço explicamos o que está incluído, quando é útil e como é feito o acompanhamento.');
-    setText('#para-quem .section-head h2.display, #who-we-serve .section-head h2.display', isEnglish ? 'More clarity, less noise.' : 'Mais clareza, menos ruído.');
-    setText('#para-quem .section-head p, #who-we-serve .section-head p', isEnglish
-      ? 'A company, an independent activity, an online business or a specific tax situation all involve different obligations. Identify the profile closest to your reality and discover the areas in which Clave de Números can support your activity.'
-      : 'Uma sociedade, uma atividade independente, um negócio online ou uma situação fiscal específica têm obrigações diferentes. Identifique o perfil mais próximo da sua realidade e conheça as áreas em que a Clave de Números pode acompanhar a sua atividade.');
-    setText('#razoes .section-head h2.display, #reasons .section-head h2.display', isEnglish ? 'A collaboration built on trust.' : 'Uma colaboração baseada na confiança.');
-    setText('#guias .section-head h2.display, #guides .section-head h2.display', isEnglish ? 'Obligations and decisions, clearly explained.' : 'Obrigações e decisões, com clareza.');
-    setText('#guias .section-head p, #guides .section-head p', isEnglish
-      ? 'Answers and articles on accounting, taxation, sole traders, personal income tax and online businesses.'
-      : 'Respostas e artigos sobre contabilidade, fiscalidade, ENI, IRS e negócios online.');
-
-    const reasonsTab = document.querySelector('#razoes .tab-index .tab, #reasons .tab-index .tab');
-    if (reasonsTab) reasonsTab.innerHTML = isEnglish
-      ? '<i>05</i> Why Clave <em>of 06</em>'
-      : '<i>05</i> Porquê a Clave <em>de 06</em>';
-
-    const origin = document.querySelector('#origem .split > div, #origins .split > div');
-    if (origin) {
-      const paragraph = origin.querySelector('p');
-      const highlight = origin.querySelector('blockquote');
-      if (paragraph) paragraph.textContent = isEnglish
-        ? 'Clave de Números grew from a professional path that began in 2011 with the preparation of investment projects for companies. Accounting developed naturally in response to clients’ needs, and the company was incorporated in 2013. Since then, it has grown consistently while maintaining close, long-term relationships.'
-        : 'A Clave de Números nasceu de um percurso iniciado em 2011 na elaboração de projetos de investimento para empresas. A contabilidade surgiu naturalmente, como resposta às necessidades dos clientes, e a empresa foi constituída em 2013. Desde então, tem crescido de forma consistente, mantendo relações próximas e duradouras.';
-      if (highlight) highlight.textContent = isEnglish
-        ? 'Responsiveness, availability and rigour continue to distinguish Clave de Números.'
-        : 'Rapidez de resposta, disponibilidade e rigor continuam a distinguir a Clave de Números.';
-    }
-  }
-
-  const methodPhases = document.querySelectorAll('.method .phase');
-  if (methodPhases.length >= 3) {
-    const paragraph = methodPhases[2].querySelector('p');
-    if (paragraph) paragraph.textContent = isEnglish
-      ? 'We process the agreed accounting, tax, payroll or administrative work regularly and communicate what is needed in good time.'
-      : 'Processamos o trabalho contabilístico, fiscal, salarial ou administrativo contratado com regularidade e comunicamos o que é necessário em tempo útil.';
-  }
-
-  if (/\/(servicos|services)\.html$/.test(path)) setText('.page-hero h1.display', isEnglish ? 'Organise. Support. Decide.' : 'Organizar. Acompanhar. Decidir.');
-  if (/\/(sobre|about)\.html$/.test(path)) setText('.page-hero h1.display', isEnglish ? 'A firm built on relationships.' : 'Uma empresa de relações.');
-  if (/\/(guias|guides)\.html$/.test(path)) setText('.page-hero h1.display', isEnglish ? 'Understand and organise your activity.' : 'Conheça e organize a sua atividade.');
-})();
-
-/* Sistema visual modular. */
-(() => {
-  const path = window.location.pathname;
-  const body = document.body;
-  if (!document.querySelector('link[href$="visual-system.css"]')) {
-    const stylesheet = document.createElement('link');
-    stylesheet.rel = 'stylesheet';
-    stylesheet.href = '../assets/visual-system.css';
-    document.head.appendChild(stylesheet);
-  }
-  const pageClass = /\/(servicos|services)\.html$/.test(path) ? 'page-services'
-    : /\/(para-empresas|for-businesses|para-particulares|for-individuals)\.html$/.test(path) ? 'page-profiles'
-    : /\/(sobre|about)\.html$/.test(path) ? 'page-about'
-    : /\/(guias|guides)\.html$/.test(path) ? 'page-guides'
-    : /\/(contactos|contact)\.html$/.test(path) ? 'page-contact'
-    : /\/(pt|en)\/?(?:index\.html)?$/.test(path) ? 'page-home' : 'page-content';
-  body.classList.add(pageClass);
-  document.querySelectorAll('.hero-media, .page-hero .hero-media').forEach((media) => media.classList.add('visual-hero'));
-  document.querySelectorAll('main > .section > .container').forEach((container, index) => {
-    if (index % 2 || container.querySelector(':scope > .visual-mark')) return;
-    const mark = document.createElement('span'); mark.className = 'visual-mark'; mark.setAttribute('aria-hidden', 'true'); container.prepend(mark);
-  });
-  document.querySelectorAll('.service-card, .post-card, .reason').forEach((card, index) => {
-    if (index % 3 !== 1 || card.querySelector(':scope > .visual-mark')) return;
-    const mark = document.createElement('span'); mark.className = 'visual-mark'; mark.setAttribute('aria-hidden', 'true'); card.appendChild(mark);
-  });
-  document.querySelectorAll('.section-head, .split').forEach((block, index) => {
-    if (index % 3 || block.nextElementSibling?.classList.contains('modular-rule')) return;
-    const rule = document.createElement('div'); rule.className = 'modular-rule'; rule.setAttribute('aria-hidden', 'true'); block.insertAdjacentElement('afterend', rule);
-  });
-  if (body.classList.contains('page-guides')) {
-    const guideType = (href) => /document|documentacao/.test(href) ? 'documents' : /sistema|system/.test(href) ? 'system' : /abrir-empresa|open-company/.test(href) ? 'company' : /lucro|caixa|tesouraria|cash|profit/.test(href) ? 'cash' : /trabalhador|worker|employee/.test(href) ? 'worker' : /fecho|inventar|closing|year-end/.test(href) ? 'closing' : 'regimes';
-    document.querySelectorAll('#guias-essenciais .service-card, #essential-guides .service-card').forEach((card) => {
-      if (card.querySelector('.guide-thumb')) return;
-      const thumb = document.createElement('span'); thumb.className = `guide-thumb guide-thumb--${guideType(card.getAttribute('href') || '')}`; thumb.setAttribute('aria-hidden', 'true'); card.prepend(thumb);
-    });
-  }
-  requestAnimationFrame(() => body.classList.add('visual-ready'));
-})();
-
-/* Perfis expansíveis da equipa. */
-if (document.querySelector('#equipa')) {
-  const profiles = document.createElement('script');
-  profiles.src = '../assets/team-profiles.js';
-  profiles.defer = true;
-  document.head.appendChild(profiles);
-}
-
-/* Mapa da morada. */
-(() => {
-  const path = window.location.pathname;
-  const isEnglish = /\/en\//.test(path);
-  if (!/\/(contactos|contact)\.html$/.test(path) || document.querySelector('[data-office-map]')) return;
-  if (!document.querySelector('link[href$="local-photos.css"]')) {
-    const stylesheet = document.createElement('link'); stylesheet.rel = 'stylesheet'; stylesheet.href = '../assets/local-photos.css'; document.head.appendChild(stylesheet);
-  }
-  const main = document.querySelector('main'); if (!main) return;
-  const mapQuery = encodeURIComponent('Rua Cidade de Ponta Delgada, Loja 136, 2870-261 Montijo');
-  const section = document.createElement('section'); section.className = 'section soft local-photo-section'; section.dataset.officeMap = '';
-  section.innerHTML = `<div class="container"><div class="contact-place-head"><p class="kicker">Montijo · Portugal</p><h2 class="display">${isEnglish ? 'Where are we?' : 'Onde estamos?'}</h2><p>${isEnglish ? 'Our office is located in Montijo. We support clients throughout Portugal.' : 'O escritório localiza-se no Montijo. Acompanhamos clientes em todo o país.'}</p></div><div class="contact-map-card contact-map-card-wide"><iframe title="${isEnglish ? 'Map showing the Clave de Números office in Montijo' : 'Mapa com a localização da Clave de Números no Montijo'}" src="https://www.google.com/maps?q=${mapQuery}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="contact-map-meta"><p><strong>Clave de Números</strong><br>Rua Cidade de Ponta Delgada, Loja 136<br>2870-261 Montijo</p><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noopener noreferrer">${isEnglish ? 'Open in Google Maps →' : 'Abrir no Google Maps →'}</a></div></div></div>`;
-  main.appendChild(section);
+  const holder = document.querySelector('[data-office-map]');
+  if (!holder || holder.querySelector('iframe')) return;
+  const query = encodeURIComponent('Rua Cidade de Ponta Delgada, Loja 136, 2870-261 Montijo');
+  const frame = document.createElement('iframe');
+  frame.title = holder.dataset.officeMapTitle || 'Mapa';
+  frame.src = `https://www.google.com/maps?q=${query}&output=embed`;
+  frame.loading = 'lazy';
+  frame.referrerPolicy = 'no-referrer-when-downgrade';
+  frame.allowFullscreen = true;
+  holder.appendChild(frame);
 })();
 
 const toggle = document.querySelector('.menu-toggle');

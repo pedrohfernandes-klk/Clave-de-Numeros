@@ -17,7 +17,7 @@
 /* Equipa — cartões equilibrados e perfis expansíveis. */
 #equipa .team-grid-hierarchy{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 #equipa .member{display:grid;grid-template-columns:108px minmax(0,1fr);align-items:start;min-height:0;overflow:hidden}
-#equipa .member>[class*="team-photo-"]{width:84px;height:105px;min-height:0!important;aspect-ratio:auto!important;margin:16px 0 16px 16px;border-radius:11px;background-size:cover;background-position:center;background-repeat:no-repeat}
+#equipa .member>.team-profile-photo{display:block;width:84px;height:105px;margin:16px 0 16px 16px;border-radius:11px;object-fit:cover;object-position:center 22%}
 #equipa .team-profile-summary{padding:16px 18px}
 #equipa .team-profile-summary>b{display:block;font-size:1.04rem;line-height:1.25}
 #equipa .team-profile-summary>small{display:block;margin-top:4px;line-height:1.4}
@@ -25,7 +25,10 @@
 #equipa .member-founder,#equipa .member-operations{grid-column:auto;box-shadow:none}
 #equipa .member-founder{border-color:rgba(53,105,184,.28)}
 #equipa .member-operations{border-color:rgba(47,181,196,.24)}
-.team-profile-card{border:1px solid rgba(20,34,52,.13);border-radius:15px;background:rgba(255,255,255,.66)}
+.team-profile-card{position:relative;border:1px solid rgba(20,34,52,.13);border-radius:15px;background:#fff;cursor:pointer;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.team-profile-card:hover{border-color:rgba(53,105,184,.42);box-shadow:0 14px 34px rgba(20,34,52,.09);transform:translateY(-2px)}
+.team-profile-card:hover .team-profile-button span{transform:translateX(3px)}
+.team-profile-card:focus-within{border-color:rgba(53,105,184,.42)}
 .team-profile-button{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:0;border:0;background:transparent;color:inherit;font:600 .78rem/1.2 "IBM Plex Mono",monospace;letter-spacing:.035em;text-transform:uppercase;cursor:pointer}
 .team-profile-button span{transition:transform .2s ease}
 .team-profile-button:hover span,.team-profile-button:focus-visible span{transform:translateX(3px)}
@@ -35,8 +38,8 @@
 .team-profile-dialog::backdrop{background:rgba(20,34,52,.46);backdrop-filter:blur(3px)}
 .team-profile-dialog[open]{animation:team-dialog-in .22s cubic-bezier(.2,.75,.25,1) both}
 .team-profile-dialog-card{position:relative;padding:24px}
-.team-profile-dialog-grid{display:grid;grid-template-columns:minmax(220px,34%) minmax(0,1fr);gap:34px;align-items:start}
-.team-profile-dialog-photo{width:100%;min-height:410px!important;aspect-ratio:4/5!important;margin:0!important;border-radius:16px;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+.team-profile-dialog-grid{display:grid;grid-template-columns:minmax(180px,27%) minmax(0,1fr);gap:30px;align-items:start}
+.team-profile-dialog-photo{display:block;width:100%;max-width:230px;height:auto;aspect-ratio:4/5;margin:0;border-radius:16px;object-fit:cover;object-position:center 22%}
 .team-profile-dialog-copy{padding:28px 30px 22px 0}
 .team-profile-dialog-copy .display{margin:.25rem 0 .45rem;font-size:clamp(2rem,4vw,3.35rem);line-height:1}
 .team-profile-role{margin:0 0 22px;font-weight:600;color:rgba(20,34,52,.68)}
@@ -67,12 +70,12 @@ html.team-dialog-open{overflow:hidden}
 @media(max-width:760px){
   #equipa .team-grid-hierarchy{grid-template-columns:1fr}
   #equipa .member{grid-template-columns:90px minmax(0,1fr)}
-  #equipa .member>[class*="team-photo-"]{width:68px;height:85px;margin:14px 0 14px 14px}
+  #equipa .member>.team-profile-photo{width:68px;height:85px;margin:14px 0 14px 14px}
   #equipa .team-profile-summary{padding:14px 14px 14px 10px}
   .team-profile-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 20px);border-radius:17px}
   .team-profile-dialog-card{padding:14px}
   .team-profile-dialog-grid{grid-template-columns:1fr;gap:18px}
-  .team-profile-dialog-photo{min-height:0!important;height:min(42vh,310px)!important;aspect-ratio:auto!important;background-position:center 28%!important}
+  .team-profile-dialog-photo{max-width:none;height:min(38vh,260px);aspect-ratio:auto;object-position:center 22%}
   .team-profile-dialog-copy{padding:0 6px 12px}
   .team-profile-dialog-copy .display{font-size:2rem}
   .team-profile-close{top:8px;margin-bottom:-45px}
