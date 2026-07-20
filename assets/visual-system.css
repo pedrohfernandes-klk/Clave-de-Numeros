@@ -135,73 +135,26 @@ body.visual-ready main>.section:nth-of-type(even):not(.soft){
   .service-card:hover::after,.post-card:hover::after,.reason:hover::after{width:100%}
 }
 
-/* 3. Miniaturas específicas dos guias */
+/* 3. Miniaturas dos cartoes (SVG embebido, uma composicao por tema) */
 body.page-guides #guias-essenciais .service-grid{align-items:stretch}
-body.page-guides #guias-essenciais .service-card{
-  overflow:hidden;
-  padding-top:148px;
-  min-height:310px;
-}
-.guide-thumb{
-  position:absolute;
-  left:0;right:0;top:0;
-  height:126px;
-  overflow:hidden;
-  border-bottom:1px solid var(--vs-line);
-  background-color:var(--vs-paper);
-  background-repeat:no-repeat;
-  transition:transform .35s ease,filter .35s ease;
-}
-.guide-thumb::before,.guide-thumb::after{content:"";position:absolute}
-
-/* documentação: pastas e folhas */
-.guide-thumb--documents{
-  background:
-    linear-gradient(var(--vs-blue),var(--vs-blue)) 28px 40px/44px 2px,
-    linear-gradient(var(--vs-line),var(--vs-line)) 28px 52px/62px 1px,
-    linear-gradient(var(--vs-line),var(--vs-line)) 28px 64px/52px 1px,
-    linear-gradient(var(--vs-teal),var(--vs-teal)) calc(100% - 68px) 34px/2px 58px,
-    var(--vs-paper);
-}
-.guide-thumb--documents::before{left:22px;top:28px;width:78px;height:70px;border:1px solid var(--vs-line);border-radius:8px;background:rgba(255,255,255,.75)}
-.guide-thumb--documents::after{right:24px;top:44px;width:38px;height:42px;border:1px solid var(--vs-line);border-radius:5px;box-shadow:-9px 9px 0 -1px var(--vs-paper),-9px 9px 0 0 var(--vs-line)}
-
-/* sistema: grelha contabilística */
-.guide-thumb--system{background:linear-gradient(90deg,transparent 49.5%,var(--vs-line) 50%,transparent 50.5%),linear-gradient(transparent 49.5%,var(--vs-line) 50%,transparent 50.5%),var(--vs-paper);background-size:34px 34px}
-.guide-thumb--system::before{inset:24px 30px;border:1px solid var(--vs-blue);border-radius:50%;background:radial-gradient(circle,var(--vs-teal) 0 4px,transparent 5px)}
-.guide-thumb--system::after{left:50%;top:18px;width:1px;height:90px;background:var(--vs-pink);transform:rotate(34deg)}
-
-/* empresa: módulos que se agregam */
-.guide-thumb--company{background:var(--vs-paper)}
-.guide-thumb--company::before{left:28px;top:26px;width:38px;height:38px;border:1px solid var(--vs-blue);border-radius:8px;box-shadow:48px 0 0 -1px var(--vs-paper),48px 0 0 0 var(--vs-line),24px 44px 0 -1px var(--vs-paper),24px 44px 0 0 var(--vs-teal)}
-.guide-thumb--company::after{left:65px;top:63px;width:60px;height:1px;background:var(--vs-line);transform:rotate(-35deg);transform-origin:left}
-
-/* tesouraria: fluxo e níveis */
-.guide-thumb--cash{background:linear-gradient(to top,rgba(53,105,184,.11) 0 28%,transparent 28%),var(--vs-paper)}
-.guide-thumb--cash::before{left:22px;right:22px;bottom:28px;height:56px;border-left:1px solid var(--vs-line);border-bottom:1px solid var(--vs-line);background:linear-gradient(135deg,transparent 0 22%,var(--vs-teal) 22% 23%,transparent 23% 42%,var(--vs-blue) 42% 43%,transparent 43% 62%,var(--vs-pink) 62% 63%,transparent 63%)}
-.guide-thumb--cash::after{right:28px;top:30px;width:12px;height:12px;border:1px solid var(--vs-blue);border-radius:50%}
-
-/* trabalhador: novo elemento na estrutura */
-.guide-thumb--worker{background:var(--vs-paper)}
-.guide-thumb--worker::before{left:25px;top:35px;width:20px;height:20px;border:1px solid var(--vs-line);border-radius:50%;box-shadow:40px 0 0 -1px var(--vs-paper),40px 0 0 0 var(--vs-line),80px 0 0 -1px var(--vs-paper),80px 0 0 0 var(--vs-teal)}
-.guide-thumb--worker::after{left:35px;top:65px;width:80px;height:28px;border:1px solid var(--vs-line);border-radius:8px;background:linear-gradient(90deg,transparent 64%,rgba(47,181,196,.12) 64%)}
-
-/* fecho: círculo e validação */
-.guide-thumb--closing{background:conic-gradient(from 25deg at 50% 50%,rgba(53,105,184,.16) 0 23%,transparent 23% 50%,rgba(47,181,196,.15) 50% 72%,transparent 72%),var(--vs-paper)}
-.guide-thumb--closing::before{left:50%;top:50%;width:54px;height:54px;border:1px solid var(--vs-line);border-radius:50%;transform:translate(-50%,-50%);background:var(--vs-paper)}
-.guide-thumb--closing::after{left:50%;top:51%;width:24px;height:12px;border-left:2px solid var(--vs-teal);border-bottom:2px solid var(--vs-teal);transform:translate(-45%,-65%) rotate(-45deg)}
-
-/* regimes: bifurcação */
-.guide-thumb--regimes{background:var(--vs-paper)}
-.guide-thumb--regimes::before{left:50%;top:22px;width:1px;height:72px;background:var(--vs-line);box-shadow:-34px 40px 0 var(--vs-blue),34px 40px 0 var(--vs-teal)}
-.guide-thumb--regimes::after{left:50%;top:52px;width:70px;height:40px;border-top:1px solid var(--vs-line);border-left:1px solid var(--vs-line);border-right:1px solid var(--vs-line);border-radius:24px 24px 0 0;transform:translateX(-50%)}
-
-@media (hover:hover){
-  body.page-guides #guias-essenciais .service-card:hover .guide-thumb{
-    transform:scale(1.015);
-    filter:saturate(1.04);
-  }
-}
+body.page-guides #guias-essenciais .service-card{overflow:hidden;padding-top:148px;min-height:310px}
+.guide-thumb,.card-thumb{position:absolute;left:0;right:0;top:0;height:126px;overflow:hidden;border-bottom:1px solid var(--vs-line);background-color:var(--vs-paper);background-repeat:no-repeat;background-position:center;background-size:cover;transition:transform .35s ease,filter .35s ease}
+.guide-thumb--documents{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='104' y='26' width='58' height='76' rx='8' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5' transform='rotate%28-9 133.0 64.0%29'/%3E%3Crect x='131' y='22' width='58' height='80' rx='8' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='143' y='44' width='34' height='4' rx='2.0' fill='%23dbe4f0' stroke='none'/%3E%3Crect x='143' y='56' width='24' height='4' rx='2.0' fill='%23dbe4f0' stroke='none'/%3E%3Crect x='143' y='68' width='30' height='4' rx='2.0' fill='%23dbe4f0' stroke='none'/%3E%3Crect x='172' y='34' width='46' height='60' rx='8' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5' transform='rotate%288 195.0 64.0%29'/%3E%3Ccircle cx='214' cy='84' r='13' fill='%23e2f6f9' stroke='none'/%3E%3Cpath d='M208 84l4.4 4.4 8-9' stroke='%232fb5c4' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E")}
+.guide-thumb--system{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='64' y='30' width='46' height='62' rx='8' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='74' y='46' width='26' height='4' rx='2.0' fill='%23dbe4f0' stroke='none'/%3E%3Crect x='74' y='57' width='18' height='4' rx='2.0' fill='%23dbe4f0' stroke='none'/%3E%3Cpath d='M116 61h22' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='3 4'/%3E%3Crect x='142' y='34' width='68' height='54' rx='8' fill='%23eef3fb' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='152' y='46' width='48' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='152' y='55' width='48' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='152' y='64' width='30' height='3' rx='1.5' fill='%233569b8' stroke='none'/%3E%3Cpath d='M216 61h22' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='3 4'/%3E%3Crect x='242' y='42' width='40' height='38' rx='8' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='252' y='55' width='20' height='3' rx='1.5' fill='%232fb5c4' stroke='none'/%3E%3Crect x='252' y='64' width='12' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3C/g%3E%3C/svg%3E")}
+.guide-thumb--company{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M78 96h164' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='92' y='68' width='40' height='28' rx='6' fill='%23eaf1fc' stroke='%233569b8' stroke-width='1.5'/%3E%3Crect x='140' y='54' width='40' height='42' rx='6' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='188' y='38' width='40' height='58' rx='6' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='4 4'/%3E%3Ccircle cx='208' cy='28' r='6' fill='none' stroke='%232fb5c4' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E")}
+.guide-thumb--cash{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M70 96h180' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Cpath d='M70 96V32' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Cpath d='M78 84c34-6 58-24 84-46' stroke='%233569b8' stroke-width='2'/%3E%3Cpath d='M78 88c30 4 56-2 84-18' stroke='%23e0508f' stroke-width='2' stroke-dasharray='4 5'/%3E%3Ccircle cx='162' cy='38' r='4' fill='%233569b8' stroke='none'/%3E%3Ccircle cx='162' cy='70' r='4' fill='%23e0508f' stroke='none'/%3E%3Cpath d='M176 38h34M176 70h34' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='3 4'/%3E%3C/g%3E%3C/svg%3E")}
+.guide-thumb--worker{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='84' y='30' width='152' height='66' rx='10' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Cpath d='M84 50h152' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Ccircle cx='100' cy='40' r='3' fill='%23c7d5e8' stroke='none'/%3E%3Ccircle cx='124' cy='40' r='3' fill='%23c7d5e8' stroke='none'/%3E%3Ccircle cx='148' cy='40' r='3' fill='%23c7d5e8' stroke='none'/%3E%3Ccircle cx='172' cy='40' r='3' fill='%23c7d5e8' stroke='none'/%3E%3Ccircle cx='196' cy='40' r='3' fill='%23c7d5e8' stroke='none'/%3E%3Ccircle cx='220' cy='40' r='3' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='96' y='60' width='30' height='24' rx='6' fill='%23e2f6f9' stroke='%232fb5c4' stroke-width='1.5'/%3E%3Crect x='134' y='60' width='18' height='24' rx='6' fill='none' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='158' y='60' width='18' height='24' rx='6' fill='none' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='182' y='60' width='18' height='24' rx='6' fill='none' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='206' y='60' width='18' height='24' rx='6' fill='none' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E")}
+.guide-thumb--closing{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='160' cy='63' r='38' fill='none' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Cpath d='M160 25a38 38 0 0 1 30 61' stroke='%232fb5c4' stroke-width='2.5'/%3E%3Cpath d='M148 63l9 9 17-19' stroke='%233569b8' stroke-width='2'/%3E%3Ccircle cx='160' cy='25' r='4' fill='%232fb5c4' stroke='none'/%3E%3Crect x='92' y='44' width='26' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='92' y='56' width='18' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='210' y='68' width='26' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='210' y='80' width='18' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3C/g%3E%3C/svg%3E")}
+.guide-thumb--regimes{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='78' y='30' width='72' height='66' rx='10' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='92' y='46' width='40' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='92' y='56' width='28' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='92' y='72' width='44' height='10' rx='5' fill='%23eaf1fc' stroke='none'/%3E%3Crect x='170' y='30' width='72' height='66' rx='10' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='184' y='46' width='40' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='184' y='56' width='34' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='184' y='66' width='28' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='184' y='78' width='44' height='10' rx='5' fill='%23e2f6f9' stroke='none'/%3E%3Cpath d='M156 40v46' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='4 5'/%3E%3Ccircle cx='156' cy='63' r='8' fill='%23fff' stroke='%23e0508f' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E")}
+.card-thumb--companies{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M74 98h172' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='96' y='40' width='48' height='58' rx='8' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='108' y='54' width='24' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='108' y='63' width='16' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='156' y='58' width='48' height='40' rx='8' fill='%23eaf1fc' stroke='%233569b8' stroke-width='1.5'/%3E%3Cpath d='M212 84c14-4 22-14 26-28' stroke='%232fb5c4' stroke-width='2'/%3E%3Ccircle cx='238' cy='56' r='4' fill='%232fb5c4' stroke='none'/%3E%3C/g%3E%3C/svg%3E")}
+.card-thumb--selfemployed{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='128' y='24' width='64' height='48' rx='8' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='142' y='40' width='32' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='142' y='50' width='22' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Cpath d='M160 72v14' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='4 4'/%3E%3Cpath d='M160 86c0 8-30 6-38 12' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='4 4'/%3E%3Cpath d='M160 86c0 8 30 6 38 12' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='4 4'/%3E%3Crect x='84' y='94' width='40' height='18' rx='9' fill='%23eaf1fc' stroke='%233569b8' stroke-width='1.5'/%3E%3Crect x='196' y='94' width='40' height='18' rx='9' fill='%23fdeaf3' stroke='%23e0508f' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E")}
+.card-thumb--online{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='72' y='28' width='46' height='22' rx='7' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='72' y='58' width='46' height='22' rx='7' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='72' y='88' width='46' height='22' rx='7' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Cpath d='M122 39c30 0 30 30 44 30' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='3 4'/%3E%3Cpath d='M122 69h44' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='3 4'/%3E%3Cpath d='M122 99c30 0 30-30 44-30' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='3 4'/%3E%3Crect x='172' y='36' width='72' height='66' rx='10' fill='%23eef3fb' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='186' y='52' width='44' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='186' y='62' width='34' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='186' y='76' width='30' height='10' rx='5' fill='%232fb5c4' stroke='none'/%3E%3Ccircle cx='166' cy='69' r='4' fill='%233569b8' stroke='none'/%3E%3C/g%3E%3C/svg%3E")}
+.card-thumb--individuals{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 126'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='84' y='26' width='64' height='76' rx='9' fill='%23fff' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Crect x='96' y='42' width='34' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='96' y='52' width='26' height='3' rx='1.5' fill='%23c7d5e8' stroke='none'/%3E%3Crect x='96' y='68' width='40' height='10' rx='5' fill='%23eaf1fc' stroke='none'/%3E%3Crect x='96' y='84' width='28' height='8' rx='4' fill='%23e2f6f9' stroke='none'/%3E%3Cpath d='M160 60h20' stroke='%23dbe4f0' stroke-width='1.5' stroke-dasharray='3 4'/%3E%3Cpath d='M192 58l22-17 22 17' stroke='%232fb5c4' stroke-width='1.8'/%3E%3Cpath d='M198 58v30h32V58' stroke='%23dbe4f0' stroke-width='1.5'/%3E%3Ccircle cx='214' cy='74' r='7' fill='%23fdeaf3' stroke='none'/%3E%3C/g%3E%3C/svg%3E")}
+/* cartoes de perfil com miniatura */
+.post-card.has-thumb{position:relative;overflow:hidden;padding-top:148px}
+body.page-guides #guias-essenciais .service-card:hover .guide-thumb,.post-card.has-thumb:hover .card-thumb{transform:scale(1.03)}
+@media(max-width:479px){.guide-thumb,.card-thumb{height:112px}body.page-guides #guias-essenciais .service-card,.post-card.has-thumb{padding-top:132px}}
+@media(prefers-reduced-motion:reduce){.guide-thumb,.card-thumb{transition:none}}
 
 /* 4. Movimento muito discreto */
 @keyframes illustration-settle{0%{opacity:0;transform:translateY(8px) scale(.992)}100%{opacity:1;transform:none}}
@@ -232,11 +185,9 @@ body.page-contact [data-office-map]::before{content:"";position:absolute;left:0;
   .hero-media img,.page-hero .hero-media img{width:min(92%,390px);transform:none!important}
   .section>.container>.visual-mark{display:none}
   .modular-rule{margin-top:16px}
-  body.page-guides #guias-essenciais .service-card{padding-top:132px;min-height:0}
-  .guide-thumb{height:112px}
 }
 
 @media(prefers-reduced-motion:reduce){
   body.visual-ready .hero-media img,body.visual-ready .page-hero .hero-media img,body.visual-ready .section>.container>.visual-mark{animation:none}
-  .service-card,.post-card,.reason,.service-sheet,.guide-thumb,.service-card::after,.post-card::after,.reason::after{transition:none}
+  .service-card,.post-card,.reason,.service-sheet,.guide-thumb,.card-thumb,.service-card::after,.post-card::after,.reason::after{transition:none}
 }

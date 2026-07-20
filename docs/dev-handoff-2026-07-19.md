@@ -402,3 +402,27 @@ suaves, glifos a 2px com remates redondos, conectores tracejados 1.4 `4 6`).
 pessoas ilustradas, um coração e cinco estrelas — exatamente os "ícones banais" e o
 "marketing vazio" que a direção exclui. Passou a representar a continuidade da empresa
 através de uma linha temporal com três marcos.
+
+### Miniaturas e composição tipográfica (20/07/2026)
+
+**Miniaturas dos guias** — a recomendação do memo ("passar de padrões CSS genéricos para
+pequenas capas próprias") foi executada. As sete miniaturas eram desenhadas com truques de
+`::before`/`::after` e estavam inconsistentes: a 01 era um bloco azul cheio que destoava do
+registo claro das restantes, a 06 lia-se como uma tarte partida e a 07 aparecia incompleta.
+Passaram a SVG desenhado, embebido em `data URI` dentro de `visual-system.css` — sem
+pedidos HTTP adicionais e sem alterações no HTML. Uma ideia clara por tema:
+folhas reunidas, documento→registo→resultado, estrutura que se constrói, duas leituras que
+divergem, rotina mensal, ciclo que fecha, dois enquadramentos comparados.
+
+**Miniaturas dos perfis** — os quatro cartões de perfil (hub Para quem e homepage) passaram
+a ter miniatura própria (`.card-thumb--companies|selfemployed|online|individuals`), na mesma
+família gráfica.
+
+**Texto justificado** — aplicado onde a medida o suporta: lede, introduções de secção,
+corpo dos guias e artigos, respostas das FAQ, fichas de serviço, testemunhos e blocos de
+contacto, com `hyphens:auto` (o `lang` correto já estava em todas as páginas). Nos cartões
+estreitos e abaixo de 760px mantém-se alinhado à esquerda, porque a justificação em colunas
+de ~25 caracteres abre rios entre palavras.
+
+**Correção** — `a.reason`, `a.post-card` e `a.service-card` não tinham `text-decoration:none`;
+nos cartões-link da página de Serviços todo o texto aparecia sublinhado.

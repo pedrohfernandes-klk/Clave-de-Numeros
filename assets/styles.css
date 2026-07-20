@@ -153,3 +153,27 @@ p.section-head{display:block;max-width:760px}
 .hero-grid{gap:64px}
 .split{gap:56px}
 }
+
+/* ==========================================================================
+   v25 · Texto justificado e cartões-link sem sublinhado
+   ========================================================================== */
+a.reason,a.post-card,a.service-card{text-decoration:none;color:inherit}
+a.reason h3,a.post-card h3,a.reason p,a.post-card p{text-decoration:none}
+
+/* Justificado apenas onde a medida o suporta (colunas largas).
+   Em cartões estreitos a justificação abriria rios entre palavras. */
+.lede,.section-head p,.article p,.article li,.faq .answer p,
+.service-sheet>p,.service-sheet dd,.split>div>p,.closing p,
+.team-profile-body p,.quote blockquote,.testimonial-slide blockquote,
+.block p,.guide-index+p{
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+}
+@media(max-width:760px){
+  .lede,.section-head p,.article p,.article li,.faq .answer p,
+  .service-sheet>p,.service-sheet dd,.split>div>p,.closing p,
+  .team-profile-body p,.quote blockquote,.testimonial-slide blockquote,
+  .block p,.guide-index+p{text-align:left;hyphens:manual}
+}
