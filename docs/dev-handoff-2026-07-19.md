@@ -375,3 +375,30 @@ situação. As antigas âncoras (`para-empresas.html#independentes`, etc.) foram
 páginas novas em todo o site.
 
 Hierarquia final: **Para quem** (hub) → **quatro páginas de perfil** → fichas de serviço.
+
+### Sistema de ilustrações — uma por página (20/07/2026)
+
+Duas páginas mostravam a mesma imagem porque `ilu-servicos.svg` era reutilizada em cinco
+páginas e `ilu-sobre.svg` / `ilu-guias.svg` em duas cada. Cada página passou a ter a sua
+ilustração, com composição distinta mas dentro da mesma gramática visual (viewBox 560×440,
+blob `#eef3fb`, fichas brancas rx16 com contorno `#e4eaf2`, medalhões r20–28 com tintas
+suaves, glifos a 2px com remates redondos, conectores tracejados 1.4 `4 6`).
+
+| Página | Ilustração | Composição |
+| --- | --- | --- |
+| Início | `hero-dossier.svg` | fichas sobrepostas |
+| Serviços | `ilu-servicos.svg` | três fichas na diagonal |
+| Para quem | `ilu-para-quem.svg` *(nova)* | grelha de quatro perfis com abas de cor |
+| Empresas | `ilu-empresas.svg` *(nova)* | ficha + evolução em barras |
+| ENI e independentes | `ilu-independentes.svg` *(nova)* | ficha central com bifurcação |
+| Negócios online | `ilu-online.svg` *(nova)* | três origens a convergir |
+| Particulares | `ilu-particulares.svg` *(nova)* | declaração + património |
+| Sobre nós | `ilu-sobre.svg` *(redesenhada)* | linha temporal de marcos |
+| Guias | `ilu-guias.svg` | pesquisa + pastas |
+| Glossário | `ilu-glossario.svg` *(nova)* | pesquisa + fichas de definição |
+| Contactos | `ilu-contactos.svg` | formulário + mapa |
+
+`ilu-sobre.svg` foi redesenhada porque contrariava a direção definida neste memo: tinha
+pessoas ilustradas, um coração e cinco estrelas — exatamente os "ícones banais" e o
+"marketing vazio" que a direção exclui. Passou a representar a continuidade da empresa
+através de uma linha temporal com três marcos.

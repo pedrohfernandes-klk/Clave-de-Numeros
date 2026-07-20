@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 440" role="img" aria-labelledby="t d">
+<title id="t">Quatro perfis de acompanhamento</title>
+<desc id="d">Quatro fichas com abas de cor distinta dispostas em grelha, ligadas por linhas tracejadas a um ponto central de orientação.</desc>
+<path d="M74 62 Q22 172 62 302 Q102 420 262 416 Q432 412 502 322 Q560 220 500 120 Q440 24 300 30 Q142 20 74 62Z" fill="#eef3fb"/>
+
+<g stroke="#3569b8" stroke-width="1.4" stroke-dasharray="4 6" fill="none" opacity=".5" stroke-linecap="round">
+  <path d="M263 210 L244 193"/>
+  <path d="M299 210 L318 193"/>
+  <path d="M263 242 L244 259"/>
+  <path d="M299 242 L318 259"/>
+</g>
+
+<!-- Perfil 01 · Empresas e sociedades -->
+<g>
+  <rect x="60" y="64" width="180" height="126" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="80" y="56" width="54" height="16" rx="8" fill="#3569b8"/>
+  <circle cx="106" cy="114" r="26" fill="#eaf1fc"/>
+  <g stroke="#3569b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(92,100)">
+    <path d="M2 28V11h11v17"/><path d="M13 28V4h13v24"/><path d="M0 28h30"/>
+  </g>
+  <rect x="146" y="103" width="72" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="146" y="119" width="50" height="7" rx="3.5" fill="#3569b8" opacity=".5"/>
+  <rect x="80" y="158" width="140" height="7" rx="3.5" fill="#e4eaf2"/>
+</g>
+
+<!-- Perfil 02 · ENI e trabalhadores independentes -->
+<g>
+  <rect x="322" y="64" width="180" height="126" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="342" y="56" width="54" height="16" rx="8" fill="#2fb5c4"/>
+  <circle cx="368" cy="114" r="26" fill="#e2f6f9"/>
+  <g stroke="#2fb5c4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(356,99)">
+    <path d="M3 2h18v26H3z"/><path d="M8 10h8 M8 17h8"/>
+  </g>
+  <rect x="408" y="103" width="72" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="408" y="119" width="50" height="7" rx="3.5" fill="#2fb5c4" opacity=".55"/>
+  <rect x="342" y="158" width="140" height="7" rx="3.5" fill="#e4eaf2"/>
+</g>
+
+<!-- Perfil 03 · Negócios online -->
+<g>
+  <rect x="60" y="262" width="180" height="126" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="80" y="254" width="54" height="16" rx="8" fill="#e0508f"/>
+  <circle cx="106" cy="312" r="26" fill="#fdeaf3"/>
+  <g stroke="#e0508f" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(91,298)">
+    <circle cx="5" cy="5" r="4"/><circle cx="25" cy="5" r="4"/><circle cx="15" cy="24" r="4"/>
+    <path d="M9 5h12 M8 8l5 12 M22 8l-5 12"/>
+  </g>
+  <rect x="146" y="301" width="72" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="146" y="317" width="50" height="7" rx="3.5" fill="#e0508f" opacity=".5"/>
+  <rect x="80" y="356" width="140" height="7" rx="3.5" fill="#e4eaf2"/>
+</g>
+
+<!-- Perfil 04 · Particulares -->
+<g>
+  <rect x="322" y="262" width="180" height="126" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="342" y="254" width="54" height="16" rx="8" fill="#3569b8"/>
+  <circle cx="368" cy="312" r="26" fill="#eaf1fc"/>
+  <g stroke="#3569b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(354,299)">
+    <path d="M1 12L14 2l13 10"/><path d="M5 12v14h18V12"/>
+  </g>
+  <rect x="408" y="301" width="72" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="408" y="317" width="50" height="7" rx="3.5" fill="#3569b8" opacity=".5"/>
+  <rect x="342" y="356" width="140" height="7" rx="3.5" fill="#e4eaf2"/>
+</g>
+
+<!-- Ponto de orientação central -->
+<circle cx="281" cy="226" r="22" fill="#fff" stroke="#e4eaf2"/>
+<circle cx="279" cy="224" r="8.5" fill="none" stroke="#3569b8" stroke-width="2"/>
+<path d="M285 230l6 6" stroke="#3569b8" stroke-width="2" stroke-linecap="round"/>
+
+<circle cx="240" cy="190" r="3.5" fill="#3569b8"/>
+<circle cx="322" cy="190" r="3.5" fill="#2fb5c4"/>
+<circle cx="240" cy="262" r="3.5" fill="#e0508f"/>
+<circle cx="322" cy="262" r="3.5" fill="#3569b8"/>
+
+<circle cx="514" cy="70" r="10" fill="none" stroke="#e0508f" stroke-width="1.4" opacity=".55"/>
+<circle cx="44" cy="226" r="6" fill="#2fb5c4" opacity=".75"/>
+<circle cx="522" cy="396" r="5" fill="#3569b8" opacity=".55"/>
+<g fill="#3569b8" opacity=".3"><circle cx="264" cy="26" r="2"/><circle cx="278" cy="26" r="2"/><circle cx="292" cy="26" r="2"/><circle cx="264" cy="40" r="2"/><circle cx="278" cy="40" r="2"/><circle cx="292" cy="40" r="2"/></g>
+</svg>

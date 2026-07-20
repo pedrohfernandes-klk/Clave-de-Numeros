@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 440" role="img" aria-labelledby="t d">
+<title id="t">Atividade independente e escolha de regime</title>
+<desc id="d">Ficha de atividade ao centro, com um percurso tracejado que se divide em dois cartões de enquadramento.</desc>
+<path d="M70 84 Q26 196 66 306 Q108 420 272 416 Q440 412 502 314 Q558 212 492 110 Q426 20 288 28 Q142 18 70 84Z" fill="#eef3fb"/>
+
+<g stroke="#3569b8" stroke-width="1.4" stroke-dasharray="4 6" fill="none" opacity=".5" stroke-linecap="round">
+  <path d="M280 232 V262"/>
+  <path d="M280 262 C280 282 214 280 178 292"/>
+  <path d="M280 262 C280 282 346 280 382 292"/>
+</g>
+
+<!-- Ficha da atividade -->
+<g>
+  <rect x="170" y="72" width="220" height="160" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <rect x="192" y="64" width="54" height="16" rx="8" fill="#2fb5c4"/>
+  <circle cx="222" cy="126" r="28" fill="#e2f6f9"/>
+  <g stroke="#2fb5c4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(207,110)">
+    <path d="M4 2h15l7 7v22H4z"/><path d="M19 2v7h7"/><path d="M10 18h10 M10 25h7"/>
+  </g>
+  <rect x="264" y="112" width="94" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="264" y="128" width="68" height="7" rx="3.5" fill="#2fb5c4" opacity=".55"/>
+  <rect x="192" y="176" width="176" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="192" y="194" width="130" height="7" rx="3.5" fill="#e4eaf2"/>
+</g>
+
+<!-- Enquadramento A -->
+<g>
+  <rect x="62" y="296" width="184" height="106" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <circle cx="98" cy="336" r="20" fill="#eaf1fc"/>
+  <g stroke="#3569b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(88,327)">
+    <path d="M2 14h16"/><path d="M2 5h11"/>
+  </g>
+  <rect x="130" y="326" width="86" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="130" y="341" width="60" height="7" rx="3.5" fill="#3569b8" opacity=".5"/>
+  <rect x="86" y="372" width="136" height="7" rx="3.5" fill="#e4eaf2"/>
+</g>
+
+<!-- Enquadramento B -->
+<g>
+  <rect x="314" y="296" width="184" height="106" rx="16" fill="#fff" stroke="#e4eaf2"/>
+  <circle cx="350" cy="336" r="20" fill="#fdeaf3"/>
+  <g stroke="#e0508f" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(340,326)">
+    <path d="M2 16h16"/><path d="M2 10h16"/><path d="M2 4h16"/>
+  </g>
+  <rect x="382" y="326" width="86" height="7" rx="3.5" fill="#e4eaf2"/>
+  <rect x="382" y="341" width="60" height="7" rx="3.5" fill="#e0508f" opacity=".5"/>
+  <rect x="338" y="372" width="136" height="7" rx="3.5" fill="#e4eaf2"/>
+</g>
+
+<circle cx="280" cy="262" r="8" fill="#fff" stroke="#2fb5c4" stroke-width="2"/>
+<circle cx="178" cy="292" r="4" fill="#3569b8"/>
+<circle cx="382" cy="292" r="4" fill="#e0508f"/>
+
+<circle cx="512" cy="80" r="10" fill="none" stroke="#e0508f" stroke-width="1.4" opacity=".55"/>
+<circle cx="44" cy="212" r="6" fill="#2fb5c4" opacity=".75"/>
+<circle cx="522" cy="384" r="5" fill="#3569b8" opacity=".55"/>
+<g fill="#3569b8" opacity=".3"><circle cx="98" cy="112" r="2"/><circle cx="112" cy="112" r="2"/><circle cx="126" cy="112" r="2"/><circle cx="98" cy="126" r="2"/><circle cx="112" cy="126" r="2"/><circle cx="126" cy="126" r="2"/></g>
+</svg>
