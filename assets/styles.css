@@ -198,3 +198,40 @@ body.page-guides #guias-essenciais .service-card:hover .guide-thumb,
 .storefront-figure{margin:0;max-width:900px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow)}
 .storefront-figure img{display:block;width:100%;height:auto}
 .storefront-figure figcaption{padding:12px 18px;font-family:var(--font-mono);font-size:.64rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line)}
+
+/* ==========================================================================
+   v27 · Neumorfismo de interação: relevo no que se toca, inset no que se ativa
+   Luz de cima-esquerda; contornos de 1px preservados; texto intocado.
+   ========================================================================== */
+:root{
+  --nm-out:-4px -4px 10px rgba(255,255,255,.9),4px 6px 14px rgba(20,33,61,.10);
+  --nm-out-sm:-2px -2px 6px rgba(255,255,255,.85),3px 4px 9px rgba(20,33,61,.08);
+  --nm-in:inset 3px 3px 7px rgba(20,33,61,.10),inset -3px -3px 7px rgba(255,255,255,.9);
+  --nm-in-sm:inset 2px 2px 5px rgba(20,33,61,.08),inset -2px -2px 5px rgba(255,255,255,.85);
+}
+/* Botões fantasma: superfície extrudida da cor do fundo */
+.cta.ghost{background:var(--paper);box-shadow:var(--nm-out-sm)}
+.cta.ghost:hover{background:var(--blue-soft);box-shadow:var(--nm-out-sm)}
+.cta.ghost:active{box-shadow:var(--nm-in-sm);transform:none}
+/* Botão principal (escuro): afunda ao clicar */
+.cta:not(.ghost):active{transform:translateY(0) scale(.99);box-shadow:inset 2px 3px 6px rgba(0,0,0,.35),inset -2px -2px 5px rgba(255,255,255,.08)}
+.mobile-cta:active{box-shadow:inset 2px 3px 6px rgba(0,0,0,.35)}
+/* Campos de formulário e pesquisa: superfícies rebaixadas */
+.field input,.field select,.field textarea{box-shadow:var(--nm-in-sm)}
+.field input:focus,.field select:focus,.field textarea:focus{box-shadow:var(--nm-in-sm),0 0 0 3px var(--blue-soft)}
+/* Seletor de idioma: calha rebaixada, opção ativa em relevo */
+.lang{box-shadow:var(--nm-in-sm)}
+.lang a[aria-current=true]{box-shadow:var(--nm-out-sm)}
+/* Menu mobile e botões utilitários */
+.menu-toggle{box-shadow:var(--nm-out-sm)}
+.menu-toggle:active{box-shadow:var(--nm-in-sm)}
+.carousel-button{background:var(--paper);box-shadow:var(--nm-out-sm)}
+.carousel-button:active{box-shadow:var(--nm-in-sm);transform:none}
+.team-profile-close{box-shadow:var(--nm-out-sm)}
+.team-profile-close:active{box-shadow:var(--nm-in-sm)}
+/* Badges de ícone: medalhões suavemente extrudidos */
+.ib{box-shadow:var(--nm-out-sm)}
+/* FAQ e glossário: entrada aberta fica "assente"; filtro ativo fica premido */
+.faq details{transition:box-shadow .25s var(--ease-out)}
+.faq details[open]{box-shadow:var(--nm-in-sm)}
+.faq-categories .cta.ghost.active{background:var(--blue-soft);box-shadow:var(--nm-in-sm)}

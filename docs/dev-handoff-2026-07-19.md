@@ -468,3 +468,19 @@ e integrar em `pt/sobre.html` + `en/about.html` (sugestão: na secção "Proximi
   fotógrafo no vidro. Nova secção "H · Escritório" em `pt/sobre.html` e `en/about.html`,
   com `.storefront-figure` em `styles.css`.
 - Paridade re-verificada após alterações: 20↔20, OK.
+
+### Neumorfismo de interação — v27 (21/07/2026)
+
+A pedido do cliente (referência: tendências Figma), foi adotado neumorfismo **apenas como
+linguagem de interação**, com três decisões explícitas do cliente: aplicar só a elementos
+interativos; manter os contornos de 1px da identidade "dossier"; usar estados inset.
+
+- Tokens `--nm-out/-sm` e `--nm-in/-sm` (luz de cima-esquerda) em `styles.css` (bloco v27)
+- Extrudidos: botões fantasma, medalhões de ícone, setas do carrossel, menu mobile,
+  botão de fecho do diálogo, opção ativa do seletor de idioma
+- Rebaixados (inset): campos de formulário e pesquisa, calha do seletor de idioma,
+  FAQ aberta, filtro de categoria ativo do glossário, botões ao clicar
+- Texto e contraste intocados; foco visível inalterado; sem novas animações
+
+Nota: o cliente confirmou a fotografia de `Desktop/DESIGN/fachada/` como frente de loja
+escolhida — é a que já está integrada em `assets/fachada.webp` desde o commit anterior.
