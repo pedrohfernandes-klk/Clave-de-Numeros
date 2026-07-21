@@ -193,3 +193,8 @@ a.reason:hover{border-color:var(--blue);box-shadow:0 10px 26px rgba(20,33,61,.07
 .site-header.is-scrolled{box-shadow:0 6px 24px rgba(20,33,61,.07)}
 body.page-guides #guias-essenciais .service-card:hover .guide-thumb,
 .post-card.has-thumb:hover .card-thumb{filter:saturate(1.07)}
+
+/* Fachada do escritório (Sobre nós) */
+.storefront-figure{margin:0;max-width:900px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.storefront-figure img{display:block;width:100%;height:auto}
+.storefront-figure figcaption{padding:12px 18px;font-family:var(--font-mono);font-size:.64rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line)}

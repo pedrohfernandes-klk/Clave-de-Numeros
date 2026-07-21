@@ -451,3 +451,20 @@ ficam em disco; quando o ficheiro estiver em `Desktop/DESIGN` (ex.: `fachada.jpg
 tratar: corrigir perspetiva/enquadramento, equilibrar exposição, exportar WebP ~1200px,
 e integrar em `pt/sobre.html` + `en/about.html` (sugestão: na secção "Proximidade, também
 à distância", ao lado da morada).
+
+### Testemunhos, traduções e fachada (21/07/2026)
+
+- **Testemunhos verificados**: os seis textos PT em `pt/sobre.html` estão byte a byte
+  idênticos à versão introduzida pelo cliente (commit `5df2dc6`) — sem alterações. Nota:
+  os testemunhos do docx original eram placeholders fictícios; a fonte de verdade são os
+  commits do cliente.
+- **Traduções EN auditadas frase a frase**: os testemunhos 4 e 5 tinham a frase final
+  omitida ("Recomendo a Clave a quem procura…" e "Pode confiar."); completadas. Adicionada
+  a nota "Translated from the Portuguese originals." na introdução EN.
+- **Fachada integrada** (indicação expressa do cliente, que substitui a orientação anterior
+  de evitar fotografias locais): `assets/fachada.webp` (1280×980, 133 KB) produzida a partir
+  de `Desktop/DESIGN/fachada/fachada.jpeg` com correção de perspetiva (warp de 4 pontos
+  sobre o plano da montra), remoção de véu, cor e nitidez, e atenuação do reflexo do
+  fotógrafo no vidro. Nova secção "H · Escritório" em `pt/sobre.html` e `en/about.html`,
+  com `.storefront-figure` em `styles.css`.
+- Paridade re-verificada após alterações: 20↔20, OK.
