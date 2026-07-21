@@ -270,9 +270,7 @@ body.home-v2.no-scroll { overflow: hidden; }
   .home-v2 .nav-links a:hover, .home-v2 .nav-links a[aria-current='page'] { background: white; color: var(--ink); }
   .home-v2 .header-actions { grid-column: 2; grid-row: 1; }
   .home-v2 .nav-cta { display: none; }
-  .home-v2 .menu-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; color: inherit; background: transparent; font: 600 0/1 var(--mono); }
-  .home-v2 .menu-toggle::before { content: 'MENU'; font-size: 8px; }
-  .home-v2 .menu-toggle[aria-expanded='true']::before { content: 'FECHAR'; }
+  .home-v2 .menu-toggle { display: grid; place-items: center; min-width: 48px; height: 44px; padding: 0 8px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; color: inherit; background: transparent; font: 600 8px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
   .home-v2 .scrolled .menu-toggle { border-color: var(--line); }
   .home-v2 .hero-stage { grid-template-columns: 1fr minmax(390px,560px) 1fr; gap: 14px; padding: 18px; }
   .home-v2 .side-module { padding: 16px; }

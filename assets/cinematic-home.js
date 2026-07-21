@@ -6,24 +6,69 @@
   const menu = document.querySelector('.nav-links');
   const toggle = document.querySelector('.menu-toggle');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const desktopQuery = window.matchMedia('(min-width: 1051px)');
+  const inertTargets = [
+    document.querySelector('main'),
+    document.querySelector('.footer'),
+    document.querySelector('.brand'),
+    document.querySelector('.lang'),
+    document.querySelector('.nav-cta')
+  ].filter(Boolean);
 
-  const closeMenu = () => {
+  const isMenuOpen = () => toggle?.getAttribute('aria-expanded') === 'true';
+
+  const setMenuState = (open, restoreFocus = false) => {
     if (!menu || !toggle) return;
-    menu.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('no-scroll');
+    const label = open ? toggle.dataset.closeLabel : toggle.dataset.openLabel;
+
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', label);
+    toggle.textContent = label;
+    document.body.classList.toggle('no-scroll', open);
+    inertTargets.forEach(element => { element.inert = open; });
+
+    if (!open && restoreFocus) {
+      toggle.focus();
+    }
   };
 
   if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') !== 'true';
-      toggle.setAttribute('aria-expanded', String(open));
-      menu.classList.toggle('open', open);
-      document.body.classList.toggle('no-scroll', open);
+    toggle.addEventListener('click', event => {
+      event.preventDefault();
+      setMenuState(!isMenuOpen());
     });
-    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuState(false)));
+
     window.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeMenu();
+      if (!isMenuOpen()) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMenuState(false, true);
+        return;
+      }
+      if (event.key === 'Tab') {
+        const links = [...menu.querySelectorAll('a')];
+        const first = links[0];
+        const last = links[links.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          toggle.focus();
+        } else if (event.shiftKey && document.activeElement === toggle) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === toggle) {
+          event.preventDefault();
+          first.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          toggle.focus();
+        }
+      }
+    });
+
+    desktopQuery.addEventListener('change', event => {
+      if (event.matches && isMenuOpen()) setMenuState(false);
     });
   }
 
@@ -46,19 +91,4 @@
     }
   }, { passive: true });
   updateScroll();
-
-  const revealItems = document.querySelectorAll('.reveal-v2');
-  if (reducedMotion || !('IntersectionObserver' in window)) {
-    revealItems.forEach(item => item.classList.add('visible'));
-  } else {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    revealItems.forEach(item => observer.observe(item));
-  }
 })();
