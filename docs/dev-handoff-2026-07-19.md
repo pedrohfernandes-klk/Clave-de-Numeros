@@ -426,3 +426,28 @@ de ~25 caracteres abre rios entre palavras.
 
 **Correção** — `a.reason`, `a.post-card` e `a.service-card` não tinham `text-decoration:none`;
 nos cartões-link da página de Serviços todo o texto aparecia sublinhado.
+
+### Paridade, revisão editorial e micro-transições (20/07/2026, 2.ª passagem)
+
+- **Paridade PT↔EN auditada e fechada** (20↔20 páginas): os sete guias PT não tinham o
+  `hreflang="en"` no `<head>` e o glossário PT também não; corrigido com URLs absolutos e
+  reciprocidade verificada por script (navs, footers, contagens de cartões/FAQ/equipa
+  espelhadas, 7 guias por língua).
+- **Revisão editorial**: removida a linguagem de migração da biblioteca de guias ("os
+  conteúdos anteriormente preparados para o blogue…" → apresentação da biblioteca em nome
+  próprio) e a descrição de interface na secção de testemunhos ("o carrossel mostra três de
+  cada vez…" → texto editorial sobre os testemunhos). Espelhado em EN.
+- **v26 · micro-transições**: easing padrão `cubic-bezier(.2,.65,.25,1)`, estado
+  `:active` nos botões, sombra de hover nos CTA, transições refinadas em cartões e FAQ,
+  e sombra discreta no cabeçalho quando a página está rolada (`.is-scrolled`, JS de 4
+  linhas). Removida a animação `cn-float` (estava morta — anulada pelo visual-system — e
+  contrariava a regra "sem movimento permanente").
+- **Ilustrações**: confirmado que as 11 páginas de cada língua usam ilustração própria.
+
+### Fotografia da fachada (pendente de ficheiro)
+
+O cliente quer a frente de loja na página Sobre nós. As fotografias enviadas por chat não
+ficam em disco; quando o ficheiro estiver em `Desktop/DESIGN` (ex.: `fachada.jpg`),
+tratar: corrigir perspetiva/enquadramento, equilibrar exposição, exportar WebP ~1200px,
+e integrar em `pt/sobre.html` + `en/about.html` (sugestão: na secção "Proximidade, também
+à distância", ao lado da morada).

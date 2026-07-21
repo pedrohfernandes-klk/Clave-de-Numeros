@@ -70,3 +70,10 @@ if (!reduced) {
   const update = () => { const root = document.documentElement; const max = root.scrollHeight - root.clientHeight; bar.style.transform = `scaleX(${max > 0 ? root.scrollTop / max : 0})`; };
   document.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
 }
+/* Sombra discreta do cabeçalho ao rolar. */
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  const shade = () => siteHeader.classList.toggle('is-scrolled', window.scrollY > 6);
+  document.addEventListener('scroll', shade, { passive: true });
+  shade();
+}

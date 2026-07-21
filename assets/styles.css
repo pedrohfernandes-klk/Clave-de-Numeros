@@ -105,10 +105,8 @@ p.section-head{color:var(--ink-2);margin-bottom:36px}
    v23 · Dinâmica: micro-animações e detalhe (anuladas com reduced-motion)
    ========================================================================== */
 @keyframes cn-pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,181,196,.4)}55%{box-shadow:0 0 0 7px rgba(47,181,196,0)}}
-@keyframes cn-float{from{transform:translateY(0)}to{transform:translateY(-10px)}}
 @keyframes cn-fade-slide{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
 .kicker::before{animation:cn-pulse 2.6s ease-in-out infinite}
-.hero-media img{animation:cn-float 5.5s ease-in-out infinite alternate}
 .hero h1 .accent{background:linear-gradient(92deg,var(--blue),var(--teal) 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .cta:not(.ghost){position:relative;overflow:hidden}
 .cta:not(.ghost)::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-130%);transition:transform .55s ease}
@@ -177,3 +175,21 @@ a.reason h3,a.post-card h3,a.reason p,a.post-card p{text-decoration:none}
   .team-profile-body p,.quote blockquote,.testimonial-slide blockquote,
   .block p,.guide-index+p{text-align:left;hyphens:manual}
 }
+
+/* ==========================================================================
+   v26 · Micro-transições: competência, confiança, discrição
+   ========================================================================== */
+:root{--ease-out:cubic-bezier(.2,.65,.25,1)}
+.reveal{transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+.cta{transition:background .22s var(--ease-out),border-color .22s var(--ease-out),transform .22s var(--ease-out),box-shadow .22s var(--ease-out)}
+.cta:not(.ghost):hover{box-shadow:0 12px 26px rgba(20,33,61,.16)}
+.cta:active{transform:translateY(0) scale(.985);box-shadow:none}
+.service-card,.post-card{transition:transform .28s var(--ease-out),box-shadow .28s var(--ease-out),border-color .28s var(--ease-out)}
+.reason{transition:border-color .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+a.reason:hover{border-color:var(--blue);box-shadow:0 10px 26px rgba(20,33,61,.07)}
+.lang a{transition:background .2s var(--ease-out),color .2s var(--ease-out)}
+.faq summary{transition:background .22s var(--ease-out),color .22s var(--ease-out)}
+.site-header{transition:box-shadow .3s var(--ease-out)}
+.site-header.is-scrolled{box-shadow:0 6px 24px rgba(20,33,61,.07)}
+body.page-guides #guias-essenciais .service-card:hover .guide-thumb,
+.post-card.has-thumb:hover .card-thumb{filter:saturate(1.07)}
