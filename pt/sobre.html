@@ -48,7 +48,7 @@
       <div class="stat-strip">
         <div class="stat"><b>2011</b><span>Início da atividade</span></div>
         <div class="stat"><b>50+</b><span>Clientes</span></div>
-        <div class="stat"><b>3</b><span>Pessoas na equipa</span></div>
+        <div class="stat"><b>4</b><span>Pessoas na equipa</span></div>
       </div>
     </div>
   </section>
@@ -195,7 +195,7 @@
           <p>O nosso espaço foi pensado para ser acessível, com abundante estacionamento e uma localização central no concelho.</p>
         </div>
         <figure class="escritorio-foto reveal">
-          <img src="../assets/fachada.jpeg" alt="Fachada do escritório Clave de Números no Montijo" width="400" height="300">
+          <img src="../assets/fachada.jpeg?v=20260722" alt="Fachada do escritório Clave de Números no Montijo" width="400" height="300">
         </figure>
       </div>
       <div class="modular-rule" aria-hidden="true"></div>
@@ -250,11 +250,16 @@
 
 <dialog class="team-profile-dialog" aria-labelledby="team-profile-name">
   <div class="team-profile-dialog-card">
-    <button class="team-profile-close" type="button" aria-label="Fechar perfil" data-team-profile-close></button>
-    <img class="team-profile-photo" src="" alt="" width="240" height="240">
-    <h2 id="team-profile-name" class="team-profile-name"></h2>
-    <p class="team-profile-role"></p>
-    <p class="team-profile-bio"></p>
+    <button class="team-profile-close" type="button" aria-label="Fechar perfil" data-team-close>Fechar <span aria-hidden="true">&#215;</span></button>
+    <div class="team-profile-dialog-grid">
+      <img class="team-profile-dialog-photo" data-team-photo src="../assets/equipa/isabel.webp" alt="Fotografia de Isabel Monteiro" width="600" height="750" loading="lazy" decoding="async">
+      <div class="team-profile-dialog-copy">
+        <p class="kicker">Conheça a equipa</p>
+        <h2 class="display" id="team-profile-name" data-team-name>Isabel Monteiro</h2>
+        <p class="team-profile-role" data-team-role>Fundadora e Contabilista Certificada</p>
+        <div class="team-profile-body" data-team-body><p>Licenciada em Gestão pela Universidade de Évora, Isabel Monteiro iniciou o seu percurso profissional na elaboração de projetos de investimento para empresas.</p><p>Como fundadora e Contabilista Certificada, dirige o trabalho da empresa e mantém uma visão transversal sobre os clientes, os respetivos processos e as decisões que exigem maior enquadramento contabilístico, fiscal ou de gestão.</p></div>
+      </div>
+    </div>
   </div>
 </dialog>
 </body>
