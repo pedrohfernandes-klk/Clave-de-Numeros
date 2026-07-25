@@ -57,10 +57,11 @@ test('every layer reaches the identical canonical final state at every intensity
 
 
 test('shouldEnhance rejects reduced motion and missing capabilities', () => {
-  assert.equal(hero.shouldEnhance({ reducedMotion: true, hasRAF: true, hasObject: true }), false);
-  assert.equal(hero.shouldEnhance({ reducedMotion: false, hasRAF: false, hasObject: true }), false);
-  assert.equal(hero.shouldEnhance({ reducedMotion: false, hasRAF: true, hasObject: false }), false);
-  assert.equal(hero.shouldEnhance({ reducedMotion: false, hasRAF: true, hasObject: true }), true);
+  assert.equal(hero.shouldEnhance({ reducedMotion: true, hasRAF: true, hasObject: true, hasObserver: true }), false);
+  assert.equal(hero.shouldEnhance({ reducedMotion: false, hasRAF: false, hasObject: true, hasObserver: true }), false);
+  assert.equal(hero.shouldEnhance({ reducedMotion: false, hasRAF: true, hasObject: false, hasObserver: true }), false);
+  assert.equal(hero.shouldEnhance({ reducedMotion: false, hasRAF: true, hasObject: true, hasObserver: false }), false);
+  assert.equal(hero.shouldEnhance({ reducedMotion: false, hasRAF: true, hasObject: true, hasObserver: true }), true);
 });
 
 
@@ -108,7 +109,12 @@ test('init subscribes to object load before inspecting same-origin content', () 
     matchMedia: () => ({ matches: false }),
     requestAnimationFrame() {},
     addEventListener() {},
-    removeEventListener() {}
+    removeEventListener() {},
+    IntersectionObserver: class {
+      constructor(callback) { this.callback = callback; }
+      observe() { this.callback([{ isIntersecting: true }]); }
+      disconnect() {}
+    }
   };
 
   hero.init(rootDocument, rootWindow);
@@ -154,7 +160,12 @@ test('init mounts when the object becomes available before the deferred runtime 
     matchMedia: () => ({ matches: false }),
     requestAnimationFrame: callback => { callback(); return 1; },
     addEventListener: (name, callback) => { windowListeners[name] = callback; },
-    removeEventListener: name => { delete windowListeners[name]; }
+    removeEventListener: name => { delete windowListeners[name]; },
+    IntersectionObserver: class {
+      constructor(callback) { this.callback = callback; }
+      observe() { this.callback([{ isIntersecting: true }]); }
+      disconnect() {}
+    }
   };
 
   const controller = hero.init(rootDocument, rootWindow);
@@ -169,6 +180,51 @@ test('init mounts when the object becomes available before the deferred runtime 
 
   assert.equal(classes.has('is-motion-ready'), true);
   controller.destroy();
+});
+
+
+test('init preserves the static fallback when IntersectionObserver is unavailable', () => {
+  const listeners = {};
+  const classes = new Set();
+  let frameCount = 0;
+  const layers = ['documents', 'frame', 'rows', 'connectors', 'validation', 'signals']
+    .map(name => ({
+      getAttribute: () => name,
+      style: { removeProperty() {} }
+    }));
+  const art = {
+    contentDocument: { querySelectorAll: () => layers },
+    addEventListener() {},
+    removeEventListener() {}
+  };
+  const scene = {
+    classList: {
+      add: name => classes.add(name),
+      toggle() {}
+    },
+    closest: () => ({ classList: { toggle() {} }, style: { setProperty() {} } }),
+    getBoundingClientRect: () => ({ top: -3000 }),
+    querySelector: () => art
+  };
+  const rootWindow = {
+    innerHeight: 1000,
+    innerWidth: 1200,
+    matchMedia: () => ({ matches: false }),
+    requestAnimationFrame: () => { frameCount += 1; return frameCount; },
+    addEventListener: (name, callback) => { listeners[name] = callback; },
+    removeEventListener() {}
+  };
+
+  const controller = hero.init({ querySelector: () => scene }, rootWindow);
+
+  assert.equal(controller, null);
+  assert.equal(classes.has('is-motion-ready'), false);
+  assert.equal(typeof listeners.scroll, 'undefined');
+  assert.equal(frameCount, 0);
+  for (const layer of layers) {
+    assert.equal(layer.style.transform, undefined);
+    assert.equal(layer.style.opacity, undefined);
+  }
 });
 
 
@@ -254,7 +310,12 @@ test('destroy restores the canonical CSS and SVG fallback state', () => {
     matchMedia: () => ({ matches: false }),
     requestAnimationFrame: callback => { callback(); return 1; },
     addEventListener() {},
-    removeEventListener() {}
+    removeEventListener() {},
+    IntersectionObserver: class {
+      constructor(callback) { this.callback = callback; }
+      observe() { this.callback([{ isIntersecting: true }]); }
+      disconnect() {}
+    }
   };
 
   const controller = hero.init({ querySelector: () => scene }, rootWindow);
