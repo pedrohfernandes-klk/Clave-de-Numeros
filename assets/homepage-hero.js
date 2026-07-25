@@ -44,7 +44,7 @@
   }
 
   function shouldEnhance(options) {
-    return !options.reducedMotion && options.hasRAF && options.hasObject;
+    return !options.reducedMotion && options.hasRAF && options.hasObject && options.hasObserver;
   }
 
   function activeLayerNames(width) {
@@ -68,16 +68,17 @@
     const art = scene && scene.querySelector('[data-homepage-hero-art]');
     const heroRoot = scene && (scene.closest('.hero') || scene);
     const reducedMotion = rootWindow.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasObserver = typeof rootWindow.IntersectionObserver === 'function';
     if (!shouldEnhance({
       reducedMotion,
       hasRAF: typeof rootWindow.requestAnimationFrame === 'function',
-      hasObject: Boolean(scene && art)
+      hasObject: Boolean(scene && art),
+      hasObserver
     })) return null;
 
-    const hasObserver = 'IntersectionObserver' in rootWindow;
     let layers = null;
     let framePending = false;
-    let visible = !hasObserver;
+    let visible = false;
     let destroyed = false;
 
     const intensity = () => rootWindow.innerWidth <= 760 ? 0.55 : rootWindow.innerWidth <= 980 ? 0.78 : 1;
@@ -104,12 +105,10 @@
       }
     };
 
-    const observer = hasObserver
-      ? new rootWindow.IntersectionObserver(entries => {
-          visible = entries.some(entry => entry.isIntersecting);
-          if (visible) schedule();
-        }, { rootMargin: '20% 0px' })
-      : null;
+    const observer = new rootWindow.IntersectionObserver(entries => {
+      visible = entries.some(entry => entry.isIntersecting);
+      if (visible) schedule();
+    }, { rootMargin: '20% 0px' });
 
     const mount = () => {
       if (layers) return;
@@ -128,7 +127,7 @@
       schedule();
     };
 
-    if (observer) observer.observe(scene);
+    observer.observe(scene);
     art.addEventListener('load', mount, { once: true });
     rootWindow.addEventListener('load', mount, { once: true });
     mount();
@@ -139,7 +138,7 @@
     return {
       destroy() {
         destroyed = true;
-        if (observer) observer.disconnect();
+        observer.disconnect();
         art.removeEventListener('load', mount);
         rootWindow.removeEventListener('load', mount);
         rootWindow.removeEventListener('scroll', schedule);
