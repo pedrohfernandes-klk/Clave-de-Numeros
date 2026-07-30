@@ -51,7 +51,7 @@
 
       <!-- ⚙️ CONFIGURE BEFORE PUBLISHING: replace SUBSTITUIR-ENDPOINT with the address
            of the chosen form service (see GUIA-DE-EDICAO.md, "Formulário" section). -->
-      <form id="contact-form" class="form reveal" data-contact-form action="https://formspree.io/f/SUBSTITUIR-ENDPOINT" method="POST">
+      <form id="contact-form" class="form reveal" data-contact-api-form>
         <div class="tab-index t-blue"><span class="tab"><i>06</i> Form <em>2 minutes</em></span></div>
 
         <div class="field">
@@ -76,10 +76,12 @@
           <label for="f-mensagem">Message <em>(required)</em></label>
           <textarea id="f-mensagem" name="mensagem" rows="5" required placeholder="Which services are you looking for? What stage is the business at?"></textarea>
         </div>
+        <div style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <label class="check">
           <input type="checkbox" name="rgpd" required>
           <span>I authorise the processing of my personal data for the purpose of replying to this request, under the <a href="privacy.html">Privacy Policy</a>. (required)</span>
         </label>
+        <div class="cf-turnstile" data-turnstile></div>
         <div>
           <button class="cta" type="submit">Send contact request</button>
         </div>
@@ -121,5 +123,8 @@
   <div class="container legal"><span>© 2026 Clave de Números — Consultoria e Gestão Unipessoal Lda</span><span><a href="privacy.html">Privacy Policy</a> · <a href="legal-notice.html">Legal Notice</a></span></div>
 </footer>
 <script src="../assets/script.js" defer></script>
+<script src="../assets/contact-config.js" defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+<script src="../assets/contact-form.js" defer></script>
 </body>
 </html>
