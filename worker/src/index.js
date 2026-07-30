@@ -187,5 +187,7 @@ export const handleRequest = async (request, env, fetchImpl = fetch) => {
 };
 
 export default {
-  fetch: handleRequest
+  fetch(request, env) {
+    return handleRequest(request, env);
+  }
 };
