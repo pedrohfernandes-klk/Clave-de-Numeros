@@ -1,3 +1,4 @@
+
 const encodeBase64Url = (value) => Buffer.from(value)
   .toString('base64')
   .replaceAll('+', '-')
@@ -36,21 +37,37 @@ export const buildMessage = ({ data, from, to }) => {
   ].join('\r\n');
 };
 
-export const createGmailSender = async (config) => {
-  const { google } = await import('googleapis');
-  const auth = new google.auth.OAuth2(config.gmailClientId, config.gmailClientSecret);
-  auth.setCredentials({ refresh_token: config.gmailRefreshToken });
-  const gmail = google.gmail({ version: 'v1', auth });
-
+export const createGmailSender = async (config, fetchImpl = fetch) => {
   return async (data) => {
+    const tokenResponse = await fetchImpl('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        client_id: config.gmailClientId,
+        client_secret: config.gmailClientSecret,
+        refresh_token: config.gmailRefreshToken,
+        grant_type: 'refresh_token'
+      }),
+      signal: AbortSignal.timeout(8000)
+    });
+    if (!tokenResponse.ok) throw new Error('Gmail OAuth token request failed');
+    const { access_token: accessToken } = await tokenResponse.json();
+    if (!accessToken) throw new Error('Gmail OAuth token missing');
+
     const message = buildMessage({
       data,
       from: config.gmailUser,
       to: config.contactRecipient
     });
-    await gmail.users.messages.send({
-      userId: 'me',
-      requestBody: { raw: encodeBase64Url(message) }
+    const sendResponse = await fetchImpl('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ raw: encodeBase64Url(message) }),
+      signal: AbortSignal.timeout(8000)
     });
+    if (!sendResponse.ok) throw new Error('Gmail API send failed');
   };
 };
