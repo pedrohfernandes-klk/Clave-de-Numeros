@@ -1,0 +1,13 @@
+
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "clave-contact-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-30",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGINS": "https://clavedenumeros.pt,https://www.clavedenumeros.pt",
+    "CONTACT_RECIPIENT": "geral@clavedenumeros.pt",
+    "GMAIL_USER": "geral@clavedenumeros.pt"
+  }
+}
