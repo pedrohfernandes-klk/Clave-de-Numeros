@@ -54,7 +54,7 @@
       <!-- ══════════ FORMULÁRIO ══════════
            ⚙️ CONFIGURAR ANTES DE PUBLICAR: substituir SUBSTITUIR-ENDPOINT pelo endereço
            do serviço de formulários escolhido (ver GUIA-DE-EDICAO.md, secção "Formulário"). -->
-      <form id="formulario" class="form reveal" data-contact-form action="https://formspree.io/f/SUBSTITUIR-ENDPOINT" method="POST">
+      <form id="formulario" class="form reveal" data-contact-api-form>
         <div class="tab-index t-blue"><span class="tab"><i>06</i> Formulário <em>2 minutos</em></span></div>
 
         <div class="field">
@@ -79,10 +79,12 @@
           <label for="f-mensagem">Mensagem <em>(obrigatório)</em></label>
           <textarea id="f-mensagem" name="mensagem" rows="5" required placeholder="Que serviços procura? Em que fase está o negócio?"></textarea>
         </div>
+        <div style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <label class="check">
           <input type="checkbox" name="rgpd" required>
           <span>Autorizo o tratamento dos meus dados para efeitos de resposta a este pedido, nos termos da <a href="privacidade.html">Política de Privacidade</a>. (obrigatório)</span>
         </label>
+        <div class="cf-turnstile" data-turnstile></div>
         <div>
           <button class="cta" type="submit">Enviar pedido de contacto</button>
         </div>
@@ -125,5 +127,8 @@
   <div class="container legal"><span>© 2026 Clave de Números — Consultoria e Gestão Unipessoal Lda</span><span><a href="privacidade.html">Política de Privacidade</a> · <a href="aviso-legal.html">Aviso Legal</a></span></div>
 </footer>
 <script src="../assets/script.js" defer></script>
+<script src="../assets/contact-config.js" defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+<script src="../assets/contact-form.js" defer></script>
 </body>
 </html>
