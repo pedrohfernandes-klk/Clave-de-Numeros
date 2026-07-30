@@ -1,3 +1,4 @@
+
 {
   "name": "clave-contact-api",
   "version": "1.0.0",
@@ -9,8 +10,5 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "node --test"
-  },
-  "dependencies": {
-    "googleapis": "^144.0.0"
   }
 }
