@@ -1,7 +1,7 @@
 
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { handleRequest } from '../src/index.js';
+import worker, { handleRequest } from '../src/index.js';
 
 const env = {
   ALLOWED_ORIGINS: 'https://clavedenumeros.pt,https://www.clavedenumeros.pt',
@@ -78,4 +78,10 @@ test('rejects a failed Turnstile challenge', async () => {
     assert.fail('Gmail must not be called');
   });
   assert.equal(result.status, 400);
+});
+
+test('Cloudflare default handler does not treat execution context as fetch', async () => {
+  const healthRequest = new Request('https://worker.example/health');
+  const result = await worker.fetch(healthRequest, env, { waitUntil() {} });
+  assert.equal(result.status, 200);
 });
