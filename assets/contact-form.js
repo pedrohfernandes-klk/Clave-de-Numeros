@@ -12,7 +12,9 @@
     && config.turnstileSiteKey
     && !config.turnstileSiteKey.includes('SUBSTITUIR_');
 
-  if (captcha && configured) captcha.dataset.sitekey = config.turnstileSiteKey;
+  if (captcha && configured && window.turnstile) {
+    window.turnstile.render(captcha, { sitekey: config.turnstileSiteKey });
+  }
 
   const showError = () => {
     error?.classList.add('err');
